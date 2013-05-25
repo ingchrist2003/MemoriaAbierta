@@ -11,7 +11,7 @@ $(function () {
         $('#menu').show();
         $.mobile.activePage.animate({
             marginLeft: "165px",
-        }, 300, function () {
+        }, 700, function () {
             menuStatus = true
         });
     };
@@ -21,7 +21,7 @@ $(function () {
         }
         $.mobile.activePage.animate({
             marginLeft: "0px",
-        }, 300, function () {
+        }, 700, function () {
             menuStatus = false
             $('#menu').hide();
         });
