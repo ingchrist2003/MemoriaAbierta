@@ -7,7 +7,7 @@
             <script src="jquerymobile/jquery-1.8.2.min.js"></script>
             <script src="jquerymobile/jquery.mobile-1.3.0.min.js"></script>
             <script src="cordova-2.7.0.js" type="text/javascript"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry"></script>
             <script>
 			 	var iden = 0;
                 function dispositivoListo(){
@@ -20,6 +20,8 @@
 				//google maps//
 				
                 var map;
+				var radiokm = 200; //radio de n km a la redonda de la posicion actual del usuario
+				var latlng;
                 var marcador;
 				var longitud;
 				var latitud;
@@ -36,11 +38,11 @@
 				}
 				function creacionMapa()
 				{
-					var latlng = new google.maps.LatLng(latitud,longitud);
+					latlng = new google.maps.LatLng(latitud,longitud);
 					//alert(latitud);
 					//alert(longitud);
                     var mapOptions = {
-                        zoom: 14,
+                        zoom: 8,
                         center: latlng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
@@ -62,7 +64,45 @@
 				function creacionMasacres()
 				{
 					var num = masacresarray.length;
-					alert(num);
+					
+					var elemactual = new Array();
+					for(i = 0; i < num ; i++)
+					{
+						var elemactual = masacresarray[i];
+						var posiactual=elemactual[2].split(",");
+						var nombremasacre = elemactual[1];
+						var descactual = elemactual[3];
+						var imaactual = elemactual[4];
+						var latiactual = posiactual[0];
+						var lngactual = posiactual[1];
+						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
+						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
+						//distancia en kilometros por eso se divide en mil
+						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						
+						if(distance < radiokm)
+						{
+                            stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+										  '<tr>'+
+											'<td valign="top"><img src="'+imaactual+'" width="100" /></td>'+
+											'<td valign="top">'+
+												'<b>'+nombremasacre+'</b><br />'+descactual+
+											'</td>'+
+										  '</tr>'+
+										'</table>';
+							//stringvar = "Distancia "+distance+" - Nombre Masacre:"+nombremasacre;
+                            //alert(stringvar);
+							//si cumple con la distancia agregamos un marcador al mapa
+							var marker = new google.maps.Marker({
+                                                                position: locationlatlng,
+                                                                map:map
+                                                                });
+							makeInfoWindowEvent(map, infowindow, stringvar, marker);
+							//ahora obtenemos la info de las masacres
+							
+						}
+						//
+					}
 				}
 				//
 				
@@ -71,31 +111,33 @@
 					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
 					//
 					//obtengo ahora la informacion de masacres
-					 $.ajax({
+                    $.ajax({
                            type: "POST",
                            url: "http://www.thethinkercloud.com/christian/masacres/masacres.php",
                            dataType: "xml",
                            success: function(xml) {
                            
-							   $(xml).find('masacre').each(function(){
-								   var masacre = new Array();
-								   
-								   var idmasacre = $(this).find('idmasacre').text();
-								   var nombre = $(this).find('nombre').text();
-								   var ubicacion = $(this).find('ubicacion').text();
-								   var descripcion = $(this).find('descripcion').text();
-								   masacre[0] = idmasacre;
-								   masacre[1] = nombre;
-								   masacre[2] = ubicacion;
-								   masacre[3] = descripcion;
-								   
-								   masacresarray.push(masacre);
-								   
-								   
-							   });
-							   creacionMasacres();
+                           $(xml).find('masacre').each(function(){
+                                                       var masacre = new Array();
+                                                       
+                                                       var idmasacre = $(this).find('idmasacre').text();
+                                                       var nombre = $(this).find('nombre').text();
+                                                       var ubicacion = $(this).find('ubicacion').text();
+                                                       var descripcion = $(this).find('descripcion').text();
+													   var imagen = $(this).find('imagen').text();
+                                                       masacre[0] = idmasacre;
+                                                       masacre[1] = nombre;
+                                                       masacre[2] = ubicacion;
+                                                       masacre[3] = descripcion;
+													   masacre[4] = imagen;
+                                                       
+                                                       masacresarray.push(masacre);
+                                                       
+                                                       
+                                                       });
+                           creacionMasacres();
                            }
-                     });
+                           });
                 }
                 //hasta aca google maps
                 $(document).on("swiperight", function(event, ui) {
