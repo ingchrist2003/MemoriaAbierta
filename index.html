@@ -14,7 +14,9 @@
                     iden = device.uuid;
                    	var networkstate = navigator.network.connection.type;
                 }
+				//lectura RSS
 				
+				//hasta aca lectura RSS
 				//google maps//
 				
                 var map;
@@ -27,6 +29,8 @@
 					
 					//
                     var latlng = new google.maps.LatLng(latitud,longitud);
+					alert(latitud);
+					alert(longitud);
                     var mapOptions = {
                         zoom: 8,
                         center: latlng,
