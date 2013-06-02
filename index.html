@@ -23,12 +23,11 @@
                 var marcador;
 				var longitud;
 				var latitud;
-                function initialize() {
-					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
-					
-					//
-                    var latlng = new google.maps.LatLng(latitud,longitud);
+				
+				//posicionamiento en google maps
+				function creacionMapa()
+				{
+					var latlng = new google.maps.LatLng(latitud,longitud);
 					alert(latitud);
 					alert(longitud);
                     var mapOptions = {
@@ -43,11 +42,16 @@
                                                       position: latlng,
                                                       map:map
                                                       })
+				}
+				//
+                function initialize() {
+					//obtengo la posicion actual del gps
+					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					//
                 }
                 //hasta aca google maps
                 $(document).on("swiperight", function(event, ui) {
-                    $( "#myPanel").panel("open", {display: "overlay", position: "left"} );
-                           
+                    $( "#myPanel").panel("open", {display: "overlay", position: "left"} );       
                 });
 				$(function () {
                   header_height  = $('[data-role="header"]').height();
@@ -64,11 +68,10 @@
 				//lectura gps
 				function lecturaGPS(position)
                 {
-                    alert("entro")
-					latitud = position.coords.latitude;
+                    latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					alert(latitud);
-					alert(longitud);
+					
+					creacionMapa();
 					
                 }
                 function errorGPS(error)
