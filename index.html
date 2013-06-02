@@ -24,14 +24,15 @@
 				var longitud;
 				var latitud;
 				var infowindow = new google.maps.InfoWindow();
+				var masacresarray = new Array() ;
 				
 				//posicionamiento en google maps
-				function makeInfoWindowEvent(map, infowindow, contentString, marker) 
+				function makeInfoWindowEvent(map, infowindow, contentString, marker)
 				{
-					  google.maps.event.addListener(marker, 'click', function() {
-						infowindow.setContent(contentString);
-						infowindow.open(map, marker);
-					  });
+                    google.maps.event.addListener(marker, 'click', function() {
+                                                  infowindow.setContent(contentString);
+                                                  infowindow.open(map, marker);
+                                                  });
 				}
 				function creacionMapa()
 				{
@@ -51,61 +52,67 @@
                                                       map:map
                                                       })
 					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
-					markers.push(marcador);
+					
 					
 					//ahora obtenemos la info de las masacres
-					alert("ss");
-						$.ajax({
-							type: "POST",
-							url: "http://thethinkercloud.com/christian/masacres/masacres.php",
-							dataType: "xml",
-							success: function(xml) {
-						 
-								var container = document.getElementById("masacreslist");
-								container.setAttribute('data-role', 'collapsible-set');
-							 
-								$(xml).find('masacre').each(function(){
-									var release = document.createElement("div");
-									release.setAttribute('data-role', 'collapsible');
-									var idmasacre = $(this).find('idmasacre').text();
-									var nombre = $(this).find('nombre').text();
-									var ubicacion = $(this).find('ubicacion').text();
-									var descripcion = $(this).find('descripcion').text();
-									
-									release.innerHTML = "<p>"+idmasacre+" "+nombre+" ("+ubicacion+") ("+descripcion+")</p>";
-									container.appendChild(release);
-								 
-								});
-							 
-								var catDiv = $('#catalogue');
-								catDiv.find('div[data-role=collapsible]').collapsible({theme:'c',refresh:true});
-							}
-						});
-					
+					markers.push(marcador);
 					//
 				}
+				
+				function creacionMasacres()
+				{
+					var num = masacresarray.length;
+					alert(num);
+				}
 				//
+				
                 function initialize() {
 					//obtengo la posicion actual del gps
 					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
 					//
+					//obtengo ahora la informacion de masacres
+					 $.ajax({
+                           type: "POST",
+                           url: "http://www.thethinkercloud.com/christian/masacres/masacres.php",
+                           dataType: "xml",
+                           success: function(xml) {
+                           
+							   $(xml).find('masacre').each(function(){
+								   var masacre = new Array();
+								   
+								   var idmasacre = $(this).find('idmasacre').text();
+								   var nombre = $(this).find('nombre').text();
+								   var ubicacion = $(this).find('ubicacion').text();
+								   var descripcion = $(this).find('descripcion').text();
+								   masacre[0] = idmasacre;
+								   masacre[1] = nombre;
+								   masacre[2] = ubicacion;
+								   masacre[3] = descripcion;
+								   
+								   masacresarray.push(masacre);
+								   
+								   
+							   });
+							   creacionMasacres();
+                           }
+                     });
                 }
                 //hasta aca google maps
                 $(document).on("swiperight", function(event, ui) {
-                    $( "#myPanel").panel("open", {display: "overlay", position: "left"} );       
-                });
+                               $( "#myPanel").panel("open", {display: "overlay", position: "left"} );
+                               });
 				$(function () {
                   header_height  = $('[data-role="header"]').height();
                   footer_height  = $('[data-role="footer"]').height();
                   window_height  = ($(this).height())-header_height-footer_height-30;
-                 // alert(window_height)
+                  // alert(window_height)
                   $('[data-role="content"]').css('height', window_height);
 				  //ajusta tamaño layer google maps
 				  $('#map_canvas').height(window_height);
 				  $('#map_canvas').width($('[data-role="header"]').width());
 				  //inicializa google maps
 				  initialize();
-                });
+                  });
 				//lectura gps
 				function lecturaGPS(position)
                 {
@@ -122,17 +129,17 @@
                 
 				//hasta aca lectura gps
 				$("div:jqmData(role='collapsible')").each(function(){
-					bindEventTouch($(this)); 
-				});
+                                                          bindEventTouch($(this));
+                                                          });
 				
 				function bindEventTouch(element) {
 					element.bind('tap', function(event, ui) {
-					   if(element.hasClass('ui-collapsible-collapsed')) {
-							alert(element.attr('id')+' is closed');
-						} else {
-							alert(element.attr('id')+' is open');
-						}
-					});
+                                 if(element.hasClass('ui-collapsible-collapsed')) {
+                                 alert(element.attr('id')+' is closed');
+                                 } else {
+                                 alert(element.attr('id')+' is open');
+                                 }
+                                 });
 				}
                 </script>
             </head>
@@ -141,21 +148,21 @@
         <div data-role="page" id="home">
             <div data-role="panel" id="myPanel" data-theme="a">
                 
-               
+                
                 <div data-role="collapsible" data-collapsed="true" id="number1" data-inset="false" data-mini="true" data-content-theme="a">
-                   <h3>Inicio</h3>
+                    <h3>Inicio</h3>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" id="number2" data-inset="false" data-mini="true" data-content-theme="a">
-                   <h3>Masacres</h3>
-                   <div id="masacres"></div>
+                    <h3>Masacres</h3>
+                    <div id="masacreslist"></div>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" id="number3" data-inset="false" data-mini="true" data-content-theme="a">
-                   <h3>Noticias</h3>
-                   <p>Contenido Noticias</p>
+                    <h3>Noticias</h3>
+                    <p>Contenido Noticias</p>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" id="number4" data-inset="false" data-mini="true" data-content-theme="a">
-                   <h3>Configuración</h3>
-                   <p>Contenido Configuración</p>
+                    <h3>Configuración</h3>
+                    <p>Contenido Configuración</p>
                 </div>
                 
             </div>
