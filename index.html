@@ -23,13 +23,21 @@
                 var marcador;
 				var longitud;
 				var latitud;
+				var infowindow = new google.maps.InfoWindow();
 				
 				//posicionamiento en google maps
+				function makeInfoWindowEvent(map, infowindow, contentString, marker) 
+				{
+					  google.maps.event.addListener(marker, 'click', function() {
+						infowindow.setContent(contentString);
+						infowindow.open(map, marker);
+					  });
+				}
 				function creacionMapa()
 				{
 					var latlng = new google.maps.LatLng(latitud,longitud);
-					alert(latitud);
-					alert(longitud);
+					//alert(latitud);
+					//alert(longitud);
                     var mapOptions = {
                         zoom: 14,
                         center: latlng,
@@ -42,6 +50,39 @@
                                                       position: latlng,
                                                       map:map
                                                       })
+					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
+					markers.push(marcador);
+					
+					//ahora obtenemos la info de las masacres
+					alert("ss");
+						$.ajax({
+							type: "POST",
+							url: "http://thethinkercloud.com/christian/masacres/masacres.php",
+							dataType: "xml",
+							success: function(xml) {
+						 
+								var container = document.getElementById("masacreslist");
+								container.setAttribute('data-role', 'collapsible-set');
+							 
+								$(xml).find('masacre').each(function(){
+									var release = document.createElement("div");
+									release.setAttribute('data-role', 'collapsible');
+									var idmasacre = $(this).find('idmasacre').text();
+									var nombre = $(this).find('nombre').text();
+									var ubicacion = $(this).find('ubicacion').text();
+									var descripcion = $(this).find('descripcion').text();
+									
+									release.innerHTML = "<p>"+idmasacre+" "+nombre+" ("+ubicacion+") ("+descripcion+")</p>";
+									container.appendChild(release);
+								 
+								});
+							 
+								var catDiv = $('#catalogue');
+								catDiv.find('div[data-role=collapsible]').collapsible({theme:'c',refresh:true});
+							}
+						});
+					
+					//
 				}
 				//
                 function initialize() {
@@ -106,7 +147,7 @@
                 </div>
                 <div data-role="collapsible" data-collapsed="true" id="number2" data-inset="false" data-mini="true" data-content-theme="a">
                    <h3>Masacres</h3>
-                   <p>Contenido Masacres</p>
+                   <div id="masacres"></div>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" id="number3" data-inset="false" data-mini="true" data-content-theme="a">
                    <h3>Noticias</h3>
