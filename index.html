@@ -10,6 +10,10 @@
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry"></script>
             <script>
 			 	var iden = 0;
+				function callItem(idmasacre)
+				{
+					alert("Masacre "+idmasacre);
+				}
                 function dispositivoListo(){
                     iden = device.uuid;
                    	var networkstate = navigator.network.connection.type;
@@ -70,6 +74,7 @@
 					{
 						var elemactual = masacresarray[i];
 						var posiactual=elemactual[2].split(",");
+						var idmasacre = elemactual[0];
 						var nombremasacre = elemactual[1];
 						var descactual = elemactual[3];
 						var imaactual = elemactual[4];
@@ -84,7 +89,7 @@
 						{
                             stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 										  '<tr>'+
-											'<td valign="top"><img src="'+imaactual+'" width="100" /></td>'+
+											'<td valign="top"><label onclick="callItem('+idmasacre+')"><img src="'+imaactual+'" width="100" /><label></td>'+
 											'<td valign="top">'+
 												'<b>'+nombremasacre+'</b><br />'+descactual+
 											'</td>'+
