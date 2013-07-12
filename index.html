@@ -88,13 +88,13 @@
 						if(distance < radiokm)
 						{
                             stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
-										  '<tr>'+
-											'<td valign="top"><label onclick="callItem('+idmasacre+')"><img src="'+imaactual+'" width="100" /><label></td>'+
-											'<td valign="top">'+
-												'<b>'+nombremasacre+'</b><br />'+descactual+
-											'</td>'+
-										  '</tr>'+
-										'</table>';
+                            '<tr>'+
+                            '<td valign="top"><label onclick="callItem('+idmasacre+')"><img src="'+imaactual+'" width="100" /><label></td>'+
+                            '<td valign="top">'+
+                            '<b>'+nombremasacre+'</b><br />'+descactual+
+                            '</td>'+
+                            '</tr>'+
+                            '</table>';
 							//stringvar = "Distancia "+distance+" - Nombre Masacre:"+nombremasacre;
                             //alert(stringvar);
 							//si cumple con la distancia agregamos un marcador al mapa
@@ -189,6 +189,22 @@
                                  });
 				}
                 </script>
+            <style type="text/css">
+				.header .ui-input-search
+				{
+					float:left;
+				}
+				
+				.header a{
+					float:left;
+					padding:0;
+					margin:0;
+				}
+				#contenido {
+					width: 640px;
+					margin:auto;
+				}
+				</style>
             </head>
     <body>
         
@@ -213,17 +229,22 @@
                 </div>
                 
             </div>
-            <div data-role="header">
-                <a href="#myPanel" data-role="button" data-display="reveal" data-position="left" data-dismissible="true">Menú</a>
-                <h1>Página dos</h1>
-                <a href="#news" data-role="button" data-transition="slideup" data-inline="true">Noticias</a>
+            <div data-role="header" class="ui-bar ui-bar-b">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="15%" align="left"><a href="#myPanel" data-role="button" data-icon="grid" data-iconpos="notext" data-display="reveal"  data-dismissible="true">Menú</a>    </td>
+                        <td width="75%" align="center"><input type="search" name="search" id="search-header" value="" data-mini="true" data-inline="true"  data-theme="b" />
+                        </td>
+                        <td width="10%" align="right"><a href="#news" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-transition="slideup" data-inline="true">Noticias</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div data-role="content">
                 <div id="map_canvas"></div>
+                <div id="contenido"></div>
             </div>
-            <div data-role="footer">
-                <h4>Pie de página</h4>
-            </div>
+            
             
             
         </div>
