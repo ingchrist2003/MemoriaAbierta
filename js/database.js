@@ -52,7 +52,7 @@ function mostrarResultados(tx,resultados)
 	alert("Muestra resultados")
 	if(resultados.rows.length==0)
 	{
-		//alert("No hay registros de masacres");
+		alert("No hay registros de masacres");
 	}else{
 		for(i=0;i<resultados.rows.length;i++)
 		{
