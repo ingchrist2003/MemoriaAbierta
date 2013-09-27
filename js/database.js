@@ -97,7 +97,7 @@ function agregarMasacres()
 function agregarMasacresSQL(tx)
 {
 	var nume = masacrearray.length;
-	
+	alert("num masacres"+nume);
 	var elemactual = new Array();
 	for(i = 0; i < nume ; i++)
 	{
