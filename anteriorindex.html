@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <title>Memoria Abierta</title>
+            <link rel="stylesheet" href="jquerymobile/jquery.mobile-1.3.0.min.css" />
+            <script src="jquerymobile/jquery-1.8.2.min.js"></script>
+            <script src="jquerymobile/jquery.mobile-1.3.0.min.js"></script>
+            <script src="cordova-2.7.0.js" type="text/javascript"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry"></script>
+            <script>
+			 	var iden = 0;
+				function callItem(idmasacre)
+				{
+					alert("Masacre "+idmasacre);
+				}
+                function dispositivoListo(){
+                    iden = device.uuid;
+                   	var networkstate = navigator.network.connection.type;
+                }
+				//lectura RSS
+				
+				//hasta aca lectura RSS
+				//google maps//
+				
+                var map;
+				var radiokm = 200; //radio de n km a la redonda de la posicion actual del usuario
+				var latlng;
+                var marcador;
+				var longitud;
+				var latitud;
+				var infowindow = new google.maps.InfoWindow();
+				var masacresarray = new Array() ;
+				
+				//posicionamiento en google maps
+				function makeInfoWindowEvent(map, infowindow, contentString, marker)
+				{
+                    google.maps.event.addListener(marker, 'click', function() {
+                                                  infowindow.setContent(contentString);
+                                                  infowindow.open(map, marker);
+                                                  });
+				}
+				function creacionMapa()
+				{
+					latlng = new google.maps.LatLng(latitud,longitud);
+					//alert(latitud);
+					//alert(longitud);
+                    var mapOptions = {
+                        zoom: 8,
+                        center: latlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById('map_canvas'),
+                                              mapOptions);
+                    //creamos un nuevo marcador en el mapa
+                    marcador = new google.maps.Marker({
+                                                      position: latlng,
+                                                      map:map
+                                                      })
+					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
+					
+					
+					//ahora obtenemos la info de las masacres
+					markers.push(marcador);
+					//
+				}
+				
+				function creacionMasacres()
+				{
+					var num = masacresarray.length;
+					
+					var elemactual = new Array();
+					for(i = 0; i < num ; i++)
+					{
+						var elemactual = masacresarray[i];
+						var posiactual=elemactual[2].split(",");
+						var idmasacre = elemactual[0];
+						var nombremasacre = elemactual[1];
+						var descactual = elemactual[3];
+						var imaactual = elemactual[4];
+						var latiactual = posiactual[0];
+						var lngactual = posiactual[1];
+						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
+						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
+						//distancia en kilometros por eso se divide en mil
+						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						
+						if(distance < radiokm)
+						{
+                            stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+                            '<tr>'+
+                            '<td valign="top"><label onclick="callItem('+idmasacre+')"><img src="'+imaactual+'" width="100" /><label></td>'+
+                            '<td valign="top">'+
+                            '<b>'+nombremasacre+'</b><br />'+descactual+
+                            '</td>'+
+                            '</tr>'+
+                            '</table>';
+							//stringvar = "Distancia "+distance+" - Nombre Masacre:"+nombremasacre;
+                            //alert(stringvar);
+							//si cumple con la distancia agregamos un marcador al mapa
+							var marker = new google.maps.Marker({
+                                                                position: locationlatlng,
+                                                                map:map
+                                                                });
+							makeInfoWindowEvent(map, infowindow, stringvar, marker);
+							//ahora obtenemos la info de las masacres
+							
+						}
+						//
+					}
+				}
+				//
+				
+                function initialize() {
+					//obtengo la posicion actual del gps
+					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					//
+					//obtengo ahora la informacion de masacres
+                    $.ajax({
+                           type: "POST",
+                           url: "http://www.thethinkercloud.com/christian/masacres/masacres.php",
+                           dataType: "xml",
+                           success: function(xml) {
+                           
+                           $(xml).find('masacre').each(function(){
+                                                       var masacre = new Array();
+                                                       
+                                                       var idmasacre = $(this).find('idmasacre').text();
+                                                       var nombre = $(this).find('nombre').text();
+                                                       var ubicacion = $(this).find('ubicacion').text();
+                                                       var descripcion = $(this).find('descripcion').text();
+													   var imagen = $(this).find('imagen').text();
+                                                       masacre[0] = idmasacre;
+                                                       masacre[1] = nombre;
+                                                       masacre[2] = ubicacion;
+                                                       masacre[3] = descripcion;
+													   masacre[4] = imagen;
+                                                       
+                                                       masacresarray.push(masacre);
+                                                       
+                                                       
+                                                       });
+                           creacionMasacres();
+                           }
+                           });
+                }
+                //hasta aca google maps
+                $(document).on("swiperight", function(event, ui) {
+                               $( "#myPanel").panel("open", {display: "overlay", position: "left"} );
+                               });
+				$(function () {
+                  header_height  = $('[data-role="header"]').height();
+                  footer_height  = $('[data-role="footer"]').height();
+                  window_height  = ($(this).height())-header_height-footer_height-30;
+                  // alert(window_height)
+                  $('[data-role="content"]').css('height', window_height);
+				  //ajusta tamaño layer google maps
+				  $('#map_canvas').height(window_height);
+				  $('#map_canvas').width($('[data-role="header"]').width());
+				  //inicializa google maps
+				  initialize();
+                  });
+				//lectura gps
+				function lecturaGPS(position)
+                {
+                    latitud = position.coords.latitude;
+					longitud = position.coords.longitude;
+					
+					creacionMapa();
+					
+                }
+                function errorGPS(error)
+                {
+                    alert("Gps no disponible");
+                }
+                
+				//hasta aca lectura gps
+				$("div:jqmData(role='collapsible')").each(function(){
+                                                          bindEventTouch($(this));
+                                                          });
+				
+				function bindEventTouch(element) {
+					element.bind('tap', function(event, ui) {
+                                 if(element.hasClass('ui-collapsible-collapsed')) {
+                                 alert(element.attr('id')+' is closed');
+                                 } else {
+                                 alert(element.attr('id')+' is open');
+                                 }
+                                 });
+				}
+                </script>
+            <style type="text/css">
+				.header .ui-input-search
+				{
+					float:left;
+				}
+				
+				.header a{
+					float:left;
+					padding:0;
+					margin:0;
+				}
+				</style>
+            </head>
+    <body>
+        
+        <div data-role="page" id="home">
+            <div data-role="panel" id="myPanel" data-theme="a">
+                
+                
+                <div data-role="collapsible" data-collapsed="true" id="number1" data-inset="false" data-mini="true" data-content-theme="a">
+                    <h3>Inicio</h3>
+                </div>
+                <div data-role="collapsible" data-collapsed="true" id="number2" data-inset="false" data-mini="true" data-content-theme="a">
+                    <h3>Masacres</h3>
+                    <div id="masacreslist"></div>
+                </div>
+                <div data-role="collapsible" data-collapsed="true" id="number3" data-inset="false" data-mini="true" data-content-theme="a">
+                    <h3>Noticias</h3>
+                    <p>Contenido Noticias</p>
+                </div>
+                <div data-role="collapsible" data-collapsed="true" id="number4" data-inset="false" data-mini="true" data-content-theme="a">
+                    <h3>Configuración</h3>
+                    <p>Contenido Configuración</p>
+                </div>
+                
+            </div>
+            <div data-role="header" class="ui-bar ui-bar-b">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="15%" align="left"><a href="#myPanel" data-role="button" data-icon="grid" data-iconpos="notext" data-display="reveal"  data-dismissible="true">Menú</a>    </td>
+                        <td width="75%" align="center"><input type="search" name="search" id="search-header" value="" data-mini="true" data-inline="true"  data-theme="b" />
+                        </td>
+                        <td width="10%" align="right"><a href="#news" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-transition="slideup" data-inline="true">Noticias</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div data-role="content">
+                <div id="map_canvas"></div>
+            </div>
+            
+            
+            
+        </div>
+        <div data-role="page" id="news">
+            <div data-role="header">
+                <a href="#" data-rel="back" data-role="button">Volver</a>
+                <h1>Noticias</h1>
+            </div>
+            <div data-role="content">
+                Contenido
+            </div>
+            <div data-role="footer">
+                <h4>Pie de página</h4>
+            </div>
+        </div>
+    </body>
+</html>
+
