@@ -116,6 +116,12 @@
 						var lngactual = posiactual[1]; 
 						
 						alert(elemactual);
+						alert("idmasacre"+idmasacre);
+						alert("nombremasacre"+nombremasacre);
+						alert("descactual"+descactual);
+						alert("imaactual"+imaactual);
+						alert("latiactual"+latiactual);
+						alert("lngactual"+lngactual);
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
 						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
