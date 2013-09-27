@@ -100,6 +100,7 @@
 				{
 					var num = masacresarray.length;
 					
+					alert("array desde creacion: \n"+masacresarray.join('\n'));
 					var elemactual = new Array();
 					var stringvar2 = "";
 					var j=1;

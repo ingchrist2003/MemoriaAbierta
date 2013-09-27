@@ -73,7 +73,7 @@ function mostrarResultados(tx,resultados)
 			
 			
 		}
-		alert("array: \n"+masacresarray.join('\n'));
+		
 	}
 	//document.getElementById("thelist").innerHTML=lista;
 	creacionPuntosMasacres();
