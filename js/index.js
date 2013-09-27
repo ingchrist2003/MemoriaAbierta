@@ -133,12 +133,12 @@
                             '</tr>'+
                             '</table>';
 							
-							var marker = new google.maps.Marker({
+							marker = new google.maps.Marker({
                                                                 position: locationlatlng,
                                                                 map:map,
 																icon: "images/icono.png"
                                                                 });
-							makeInfoWindowEvent(map, infowindow, stringvar, marker);
+							//makeInfoWindowEvent(map, infowindow, stringvar, marker);
 							
 							alert("luego"+elemactual);
 							//2.Agregando al listado
