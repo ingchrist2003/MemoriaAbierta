@@ -49,6 +49,7 @@ function mostrarResultados(tx,resultados)
 	//var ancho = contenedor.offsetWidth;
 	//alert(resultados.rows.length);
 	//
+	alert("Muestra resultados")
 	if(resultados.rows.length==0)
 	{
 		//alert("No hay registros de masacres");
