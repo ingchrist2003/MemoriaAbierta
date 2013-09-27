@@ -115,7 +115,7 @@
 						var latiactual = posiactual[0];
 						var lngactual = posiactual[1]; 
 						
-						alert(idmasacre);
+						alert(elemactual);
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
 						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
@@ -140,7 +140,7 @@
                                                                 });
 							makeInfoWindowEvent(map, infowindow, stringvar, marker);
 							
-							
+							alert("luego"+elemactual);
 							//2.Agregando al listado
 							stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
                             '<tr>'+
@@ -153,6 +153,7 @@
                             '</tr>'+
                             '</table></li>';
 							j++;
+							
 						}
 						//
 					}
