@@ -229,7 +229,7 @@
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
-				  initialize();
+				 // initialize();
 				  
 				  
 				  $( ".go" ).click(function() {
@@ -260,4 +260,4 @@
 					 
 				  });
                 });
-				
+				document.addEventListener("deviceready",initialize,false);
