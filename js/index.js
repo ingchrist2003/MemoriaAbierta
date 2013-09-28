@@ -161,7 +161,7 @@
 				
                 function initialize() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					navigator.geolocation.watchPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
