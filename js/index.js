@@ -165,10 +165,7 @@
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
-					db = window.openDatabase("masacres","1.0","Masacres App",200000);
-					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
-					alert("antes de leer");
-					leerBaseDatos();
+					
                 }
 				
                 function refrescarApp() {
@@ -185,6 +182,11 @@
 					longitud = position.coords.longitude;
 					
 					creacionMapa();
+					
+					db = window.openDatabase("masacres","1.0","Masacres App",200000);
+					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
+					alert("antes de leer");
+					leerBaseDatos();
 					
                 }
                 function errorGPS(error)
