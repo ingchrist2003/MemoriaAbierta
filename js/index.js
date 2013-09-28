@@ -76,6 +76,7 @@
 					latlng = new google.maps.LatLng(latitud,longitud);
 					//alert(latitud);
 					//alert(longitud);
+					alert("creacionmapa "+latlng);
                     var mapOptions = {
                         zoom: 8,
                         center: latlng,
