@@ -162,7 +162,11 @@
                 function initialize() {
 					//obtengo la posicion actual del gps
 					var arrayposition = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
-					alert(arrayposition);
+					var output = '';
+					for (property in object) {
+					  output += property + ': ' + object[property]+'; ';
+					}
+					alert(output);
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
