@@ -76,6 +76,7 @@
 					latlng = new google.maps.LatLng(latitud,longitud);
 					//alert(latitud);
 					//alert(longitud);
+					alert("creacionmapa  "+latlng);
                     var mapOptions = {
                         zoom: 8,
                         center: latlng,
@@ -100,6 +101,7 @@
 				{
 					var num = masacresarray.length;
 					
+					alert("array desde creacion: \n"+masacresarray.join('\n'));
 					var elemactual = new Array();
 					var stringvar2 = "";
 					var j=1;
@@ -112,12 +114,22 @@
 						var descactual = elemactual[3];
 						var imaactual = elemactual[4];
 						var latiactual = posiactual[0];
-						var lngactual = posiactual[1];
+						var lngactual = posiactual[1]; 
+						
+						alert(elemactual);
+						alert("idmasacre "+idmasacre);
+						alert("nombremasacre "+nombremasacre);
+						alert("descactual "+descactual);
+						alert("imaactual"+imaactual);
+						alert("latiactual "+latiactual);
+						alert("lngactual "+lngactual);
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
 						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
-						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
-						
+						//distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						alert("first: "+locationlatlng);
+						alert("second: "+latlng);
+						/*
 						if(distance < radiokm)
 						{
 							//si cumple con la distancia agregamos un marcador al mapa
@@ -130,14 +142,14 @@
                             '</tr>'+
                             '</table>';
 							
-							var marker = new google.maps.Marker({
+							marker = new google.maps.Marker({
                                                                 position: locationlatlng,
                                                                 map:map,
 																icon: "images/icono.png"
                                                                 });
-							makeInfoWindowEvent(map, infowindow, stringvar, marker);
+							//makeInfoWindowEvent(map, infowindow, stringvar, marker);
 							
-							
+							alert("luego"+elemactual);
 							//2.Agregando al listado
 							stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
                             '<tr>'+
@@ -150,24 +162,37 @@
                             '</tr>'+
                             '</table></li>';
 							j++;
-						}
+							
+						}*/
 						//
 					}
-					document.getElementById("thelist").innerHTML=stringvar2;
-					pullDownAction();
-					myScroll.refresh();
+					//alert(stringvar2);
+					//document.getElementById("thelist").innerHTML=stringvar2;
+					//pullDownAction();
+					//myScroll.refresh();
 				}
 				//
 				
                 function initialize() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					//navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							 alert("Lat: " + position.coords.latitude + "\nLon: " + position.coords.longitude);
+						},
+						function(error){
+							 alert(error.message);
+						}, {
+							 enableHighAccuracy: true
+								  ,timeout : 5000
+						}
+					);
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
 					db = window.openDatabase("masacres","1.0","Masacres App",200000);
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
-					alert("antes de leer");
+					
 					leerBaseDatos();
                 }
 				
@@ -213,7 +238,7 @@
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
-				  initialize();
+				 // initialize();
 				  
 				  
 				  $( ".go" ).click(function() {
@@ -245,3 +270,7 @@
 				  });
                 });
 				
+				$(document).ready(function() {
+                                  //
+                                  initialize();
+                                  });
