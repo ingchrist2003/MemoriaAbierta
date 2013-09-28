@@ -123,9 +123,10 @@
 						alert("latiactual "+latiactual);
 						alert("lngactual "+lngactual);
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
-						//var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
+						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
-						//distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						alert(distance);
 						/*
 						if(distance < radiokm)
 						{
