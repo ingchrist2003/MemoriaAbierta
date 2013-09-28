@@ -126,7 +126,8 @@
 						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
 						//distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
-						alert(locationlatlng);
+						alert("first: "+locationlatlng);
+						alert("second: "+latlng);
 						/*
 						if(distance < radiokm)
 						{
