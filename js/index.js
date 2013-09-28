@@ -175,7 +175,9 @@
 				
                 function initialize() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					title = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					
+					alert(title);
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
@@ -197,7 +199,7 @@
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					alert("lectura");
+					
 					creacionMapa();
 					
                 }
