@@ -175,9 +175,8 @@
 				
                 function initialize() {
 					//obtengo la posicion actual del gps
-					title = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
 					
-					alert(title);
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
@@ -229,7 +228,7 @@
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
-				 // initialize();
+				  initialize();
 				  
 				  
 				  $( ".go" ).click(function() {
@@ -260,4 +259,8 @@
 					 
 				  });
                 });
-				document.addEventListener("deviceready",initialize,false);
+				
+				$(document).ready(function() {
+                                  //
+                                  initialize();
+                                  });
