@@ -175,8 +175,18 @@
 				
                 function initialize() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
-					
+					//navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							 alert("Lat: " + position.coords.latitude + "\nLon: " + position.coords.longitude);
+						},
+						function(error){
+							 alert(error.message);
+						}, {
+							 enableHighAccuracy: true
+								  ,timeout : 5000
+						}
+					);
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
