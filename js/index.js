@@ -165,8 +165,8 @@
 					}
 					alert(stringvar2);
 					document.getElementById("thelist").innerHTML=stringvar2;
-					pullDownAction();
-					myScroll.refresh();
+					//pullDownAction();
+					//myScroll.refresh();
 				}
 				//
 				
