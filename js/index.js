@@ -116,17 +116,17 @@
 						var lngactual = posiactual[1]; 
 						
 						alert(elemactual);
-						alert("idmasacre"+idmasacre);
-						alert("nombremasacre"+nombremasacre);
-						alert("descactual"+descactual);
+						alert("idmasacre "+idmasacre);
+						alert("nombremasacre "+nombremasacre);
+						alert("descactual "+descactual);
 						alert("imaactual"+imaactual);
-						alert("latiactual"+latiactual);
-						alert("lngactual"+lngactual);
+						alert("latiactual "+latiactual);
+						alert("lngactual "+lngactual);
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
 						//var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
 						//distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
-						
+						/*
 						if(distance < radiokm)
 						{
 							//si cumple con la distancia agregamos un marcador al mapa
@@ -139,11 +139,11 @@
                             '</tr>'+
                             '</table>';
 							
-							/*marker = new google.maps.Marker({
+							marker = new google.maps.Marker({
                                                                 position: locationlatlng,
                                                                 map:map,
 																icon: "images/icono.png"
-                                                                });*/
+                                                                });
 							//makeInfoWindowEvent(map, infowindow, stringvar, marker);
 							
 							alert("luego"+elemactual);
@@ -160,11 +160,11 @@
                             '</table></li>';
 							j++;
 							
-						}
+						}*/
 						//
 					}
-					alert(stringvar2);
-					document.getElementById("thelist").innerHTML=stringvar2;
+					//alert(stringvar2);
+					//document.getElementById("thelist").innerHTML=stringvar2;
 					//pullDownAction();
 					//myScroll.refresh();
 				}
