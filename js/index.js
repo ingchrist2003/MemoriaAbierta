@@ -199,7 +199,8 @@
                 }
                 function errorGPS(error)
                 {
-                    alert("Gps no disponible");
+                    alert("Error while retrieving current position. <br/>Error code: " + error.code + "<br/>Message: " + error.message);
+					
                 }
                 
 				//hasta aca lectura gps
