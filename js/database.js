@@ -93,6 +93,16 @@ function agregarMasacres()
 	db = window.openDatabase("masacres","1.0","Masacres App",200000);
 	db.transaction(agregarMasacresSQL,errorDB,leerBaseDatos);
 }
+
+var nidact = "";
+var nombreact = "";
+var descripcionact =  "";
+var imagenact = "";
+var fechainicioact = "";
+var ubicacionact = "";
+var fechacre = "";
+var fechaact = "";
+
 function agregarMasacresSQL(tx)
 {
 	var nume = masacrearray.length;
@@ -104,22 +114,30 @@ function agregarMasacresSQL(tx)
 		//var abstract = cadtexto.replace('"',"'");
 		//var abstract = $('#tempo').html(cadtexto).text();
 		//alert(cadtexto);
-		var elemactual = masacrearray[i];
-		var nidact = elemactual[0];
-		var nombreact = elemactual[1];
-		var descripcionact =  cadtexto;
-		var imagenact = elemactual[3];
-		var fechainicioact = elemactual[4];
-		var ubicacionact = elemactual[5];
-		var fechacre = elemactual[6];
-		var fechaact = elemactual[7];
+		elemactual = masacrearray[i];
+		nidact = elemactual[0];
+		nombreact = elemactual[1];
+		descripcionact =  cadtexto;
+		imagenact = elemactual[3];
+		fechainicioact = elemactual[4];
+		ubicacionact = elemactual[5];
+		fechacre = elemactual[6];
+		fechaact = elemactual[7];
 		
-		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'")');
+		tx.executeSql('SELECT * FROM MASACRES ORDER BY nid='+nidact+' DESC LIMIT 0,1',[],resultExiste,errorDB)
+		
 		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
 	}
 	
 }
 
+function resultExiste(tx,resultados)
+{
+	if(resultados.rows.length==0)//no existe ningún registro entonces lo podemos crear
+	{
+		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'")');
+	}
+}
 function actualizarMasacres()
 {
 	var db;
