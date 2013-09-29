@@ -78,7 +78,7 @@
 function init() {
   watchLocation(function(coords) {
     //document.getElementById('test').innerHTML = 'coords: ' + coords.latitude + ',' + coords.longitude;
-	
+	alert('coords: ' + coords.latitude + ',' + coords.longitude);
 	latitud = coords.latitude;
 	longitud = coords.longitude;
 	creacionMapa();
