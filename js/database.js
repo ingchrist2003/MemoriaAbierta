@@ -25,7 +25,7 @@ function abrirBaseDatos()
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
 }
 /*Noticias*/
@@ -125,7 +125,7 @@ function agregarMasacresSQL(tx)
 		fechaact = elemactual[7];
 		
 		//tx.executeSql('SELECT * FROM MASACRES WHERE nid='+nidact+' ORDER BY nid DESC LIMIT 0,1',[],resultExiste,errorDB)
-		tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES (?,?,?,?,?,?,?,?) WHERE nid=?',[nidact,nombreact,descripcionact,ubicacionact,imagenact,fechainicioact,fechacre,fechaact,nidact]);
+		tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES (?,?,?,?,?,?,?,?)',[nidact,nombreact,descripcionact,ubicacionact,imagenact,fechainicioact,fechacre,fechaact]);
 		//tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("'+nidact+'","'+nombreact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'")');
 		//tx.executeSql('INSERT IGNORE INTO  MASACRES SET nid="'+nidact+'",nombre="'+nombreact+'",descripcion="'+descripcionact+'",ubicacion="'+ubicacionact+'",imagen="'+imagenact+'",fechainicio="'+fechainicioact+'",fecha_creacion="'+fechacre+'",fecha_actualizacion="'+fechaact+'"');
 		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
