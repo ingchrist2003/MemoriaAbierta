@@ -289,12 +289,13 @@ function watchLocation(successCallback, errorCallback) {
 
 function init() {
   watchLocation(function(coords) {
-    document.getElementById('test').innerHTML = 'coords: ' + coords.latitude + ',' + coords.longitude;
+    //document.getElementById('test').innerHTML = 'coords: ' + coords.latitude + ',' + coords.longitude;
+	alert("ppp");
 	latitud = coords.latitude;
 	longitud = coords.longitude;
 	creacionMapa();
   }, function() {
-    document.getElementById('test').innerHTML = 'error';
+    alert('error');
   });
 }
 				
