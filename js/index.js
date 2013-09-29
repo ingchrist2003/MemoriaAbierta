@@ -211,7 +211,6 @@
 				 
 				
 				
-				
 
 				$(function () {
                   header_height  = $('[data-role="header"]').height();
@@ -229,7 +228,7 @@
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
-				 
+				 initialize();
 				  
 				  
 				  $( ".go" ).click(function() {
@@ -261,5 +260,5 @@
 				  });
                 });
 				
-
+				
 				
