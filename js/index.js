@@ -167,9 +167,9 @@
                 function initialize() {
 					//obtengo la posicion actual del gps
 					var arrayposition = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{
-						enableHighAccuracy: true,
-						timeout: 10000,
-						maximumAge: 0
+						enableHighAccuracy: false,
+						timeout: 20000,
+						maximumAge: 3000
 			
 					});
 					
