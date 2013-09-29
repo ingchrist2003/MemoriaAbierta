@@ -124,7 +124,7 @@ function agregarMasacresSQL(tx)
 		fechacre = elemactual[6];
 		fechaact = elemactual[7];
 		
-		tx.executeSql('SELECT * FROM MASACRES ORDER BY nid='+nidact+' DESC LIMIT 0,1',[],resultExiste,errorDB)
+		tx.executeSql('SELECT * FROM MASACRES WHERE nid='+nidact+' ORDER BY nid DESC LIMIT 0,1',[],resultExiste,errorDB)
 		
 		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
 	}
