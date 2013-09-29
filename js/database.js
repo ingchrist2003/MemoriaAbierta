@@ -133,6 +133,8 @@ function agregarMasacresSQL(tx)
 
 function resultExiste(tx,resultados)
 {
+	alert(resultados.rows.length);
+	alert(nidact);
 	if(resultados.rows.length==0)//no existe ningún registro entonces lo podemos crear
 	{
 		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'")');
