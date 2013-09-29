@@ -136,6 +136,7 @@ function resultLastUpdate(tx,resultados)
 	fechaupd = resultados.rows.item(0).fecha_actualizacion;
 }
 function cargaXMLMasacres() {
+	alert(fechaupd)
 	masacrearray = [];
 	nidsarray = [];
 	$.ajax({
