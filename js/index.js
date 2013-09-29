@@ -209,9 +209,7 @@
                 });
 				
 				 
-				function onDeviceReady() {
-					initialize();
-				}
+				
 				
 				
 
@@ -264,43 +262,4 @@
                 });
 				
 				
-				document.write("Trying to locate you");
-
-				if(navigator.geolocation){
-					document.write("Geolocation is supported");
 				
-					navigator.geolocation.getCurrentPosition(successCallback, errorCallback,
-					  {
-						enableHighAccuracy : true,
-						timeout : 10000, // 10s
-						maximumAge : 0
-					  }
-					);
-				
-				function successCallback(position){
-					document.write("You have been located. Latitude :" + position.coords.latitude +", longitude : " + position.coords.longitude);       
-				};
-				
-				
-				function errorCallback(error){
-					document.write("It didn't work");
-					switch(error.code){
-					case error.PERMISSION_DENIED:
-						document.write("Permission denied");
-						break;
-					case error.POSITION_UNAVAILABLE:
-						document.write("Position unavailable");
-						break;
-					case error.TIMEOUT:
-						document.write("Timeout");
-						break;
-					case error.UNKNOW_ERROR:
-						document.write("Unknown error");
-						break;              
-					}
-				}
-				
-				}
-				else{
-					document.write("La géolocalisation n'est pas supportée par le navigateur"); 
-				}
