@@ -25,7 +25,7 @@
 				//google maps//
 				
                 var map;
-				var radiokm = 200; //radio de n km a la redonda de la posicion actual del usuario
+				var radiokm = 50; //radio de n km a la redonda de la posicion actual del usuario
 				var latlng;
                 var marcador;
 				var longitud;
