@@ -24,6 +24,7 @@ function abrirBaseDatos()
 
 function crearRegistros(tx)
 {
+	alert("crea registros");
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
