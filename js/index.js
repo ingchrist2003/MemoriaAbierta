@@ -168,11 +168,6 @@
 			
 					});
 					
-					//
-					//obtengo ahora la informacion de masacres
-					//var db;
-					db = window.openDatabase("masacres","1.0","Masacres App",200000);
-					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					
                 }
 				
@@ -191,6 +186,11 @@
 					alert("latitud: "+latitud+" longitud: "+longitud);
 					creacionMapa(); 
 					
+					//
+					//obtengo ahora la informacion de masacres
+					//var db;
+					db = window.openDatabase("masacres","1.0","Masacres App",200000);
+					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					
 					
                 }

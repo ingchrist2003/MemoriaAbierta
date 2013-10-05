@@ -198,7 +198,7 @@ function creacionMasacres()
 {
 	
 	listado = nidsarray.join(",");
-	alert(listado);
+	
 	db = window.openDatabase("masacres","1.0","Masacres App",200000);
 	db.transaction(borrarRepetidas,errorDB,agregarMasacres);	
 }
