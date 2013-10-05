@@ -167,7 +167,7 @@
 						enableHighAccuracy: true
 			
 					});
-					creacionMapa(); 
+					
 					//
 					//obtengo ahora la informacion de masacres
 					//var db;
@@ -185,23 +185,13 @@
 					leerBaseDatos();
                 }
 				//lectura gps
-				function lecturaGPSInicial(position)
-                {
-                    latitud = position.coords.latitude;
-					longitud = position.coords.longitude;
-					
-					
-					
-					
-					
-					
-                }
+				
 				function lecturaGPS(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					alert("latitud: "+latitud+" longitud: "+longitud);
-					
+					creacionMapa(); 
 					
 					
                 }
