@@ -188,8 +188,8 @@
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					
-					creacionMapa();
+					alert("latitud: "+latitud+" longitud: "+longitud);
+					creacionMapa(); 
 					
 					
 					
