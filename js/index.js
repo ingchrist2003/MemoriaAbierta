@@ -193,7 +193,6 @@
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					alert("latitud: "+latitud+" longitud: "+longitud);
 					creacionMapa(); 
                 }
 				function lecturaGPSActualiza(position)
