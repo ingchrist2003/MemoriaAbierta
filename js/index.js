@@ -179,9 +179,9 @@
 				
                 function refrescarApp() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
-					actualizarMasacres()
+					
                 }
 				//lectura gps
 				
@@ -192,6 +192,15 @@
 					alert("latitud: "+latitud+" longitud: "+longitud);
 					creacionMapa(); 
 					
+					
+                }
+				function lecturaGPSActualiza(position)
+                {
+                    latitud = position.coords.latitude;
+					longitud = position.coords.longitude;
+					alert("latitud: "+latitud+" longitud: "+longitud);
+					creacionMapa(); 
+					actualizarMasacres();
 					
                 }
                 function errorGPS(error)
