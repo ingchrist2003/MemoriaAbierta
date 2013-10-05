@@ -150,7 +150,7 @@ function resultLastUpdate(tx,resultados)
 	fechaupd = resultados.rows.item(0).fecha_actualizacion;
 }
 function cargaXMLMasacres() {
-	alert(fechaupd)
+	//alert(fechaupd)
 	masacrearray = [];
 	nidsarray = [];
 	$.ajax({
@@ -198,6 +198,7 @@ function creacionMasacres()
 {
 	
 	listado = nidsarray.join(",");
+	alert(listado);
 	db = window.openDatabase("masacres","1.0","Masacres App",200000);
 	db.transaction(borrarRepetidas,errorDB,agregarMasacres);	
 }
