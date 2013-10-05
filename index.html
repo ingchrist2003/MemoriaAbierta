@@ -31,23 +31,34 @@
          
         <div data-role="page" id="home">
             <div data-role="panel" id="myPanel" data-theme="a">
-              <div class="ui-body ui-body-a">
-                <h2>Rutas del Conflicto</h2>
+              
+                <h3>Rutas del Conflicto</h3>
                 <p>Aplicación para la memoria histórica de nuestro país</em>.</p>
                 <!-- /collapsible -->
-               	<div data-role="collapsible" data-collapsed="true" id="number3" data-inset="false" data-mini="true" data-theme="a" data-content-theme="a">
-                        <h3>OPCIONES DE CONFIGURACIÓN</h3>
-                        <p>Contenido Configuración</p>
-                </div>
-                <div data-role="collapsible" data-collapsed="true" id="number4" data-inset="false" data-mini="true" data-theme="a" data-content-theme="a">
+                <div data-role="collapsible-set">
+                <!-- acordeon -->
+               		<div data-role="collapsible" data-collapsed="false" id="number3" data-inset="false" data-mini="true" 
+                	data-theme="a" data-content-theme="a">
+                        <h3>RADIO EN KM</h3>
+                        <p>
+                        Deslice el slider para seleccionar el radio de distancia desde su ubicación actual.<br>
+                        <label for="slider-mini">Km:</label>
+						<input type="range" name="slider-mini" id="slider-mini" value="50" min="50" max="300" data-highlight="true" data-mini="true" />
+                        </p>
+                	</div>
+                	<div data-role="collapsible" data-collapsed="false" id="number4" data-inset="false" data-mini="true" 
+                    data-theme="a" data-content-theme="a">
                         <h3>NOTICIAS</h3>
                         <p>Contenido Noticias</p>
-                </div>
-                <div data-role="collapsible" data-collapsed="true" id="number4" data-inset="false" data-mini="true" data-theme="a" data-content-theme="a">
+                	</div>
+                	<div data-role="collapsible" data-collapsed="false" id="number4" data-inset="false" data-mini="true" 
+                    data-theme="a" data-content-theme="a">
                         <h2>ACERCA DE NOSOTROS</h2>
                         <p>Contenido About u</p>
+                	</div>
+                <!-- acordeon -->
                 </div>
-              </div>
+              
             </div>
             <div data-role="header" class="ui-bar ui-bar-b">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">

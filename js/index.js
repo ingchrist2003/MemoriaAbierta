@@ -232,8 +232,15 @@
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
-				 initialize();
-				  
+				  initialize();
+				  //inicializa el call del slider de radio de distancia
+				  $( "#slider-mini").on('slidestop', function( event ) {
+					   radiokm = $("#slider-mini").slider().val();
+					   //alert(radiokm);
+					   radiokm = radiokm*1/1;
+					   refrescarApp();
+				  });
+				  //hasta aca call del slider de radio de distancia
 				  
 				  $( ".go" ).click(function() {
 					  if(listadoshow == true)
