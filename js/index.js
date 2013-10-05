@@ -94,7 +94,7 @@
 					alert("tres")
 					
 					//ahora obtenemos la info de las masacres
-					markers.push(marcador);
+					//markers.push(marcador);
 					//
 					
 					//luego de la creación del mapa
