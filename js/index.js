@@ -171,6 +171,7 @@
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
 					myScroll.refresh();
+					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar...</span>';
 				}
 				//
 				
