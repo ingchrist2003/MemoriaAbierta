@@ -39,6 +39,7 @@
 				var pantallaheight="";
 				var heightvar="";
 				var topvar="";
+				var db = window.openDatabase("masacres","1.0","Masacres App",200000);
 				
 				function callItem(numero)
 				{
@@ -97,9 +98,9 @@
 					
 					//luego de la creación del mapa
 					//creamos la base de datos
-					db = window.openDatabase("masacres","1.0","Masacres App",200000);
-					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					
+					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
+					alert("ppp");
 				}
 				
 				function creacionPuntosMasacres()
