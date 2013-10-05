@@ -172,6 +172,7 @@
 					pullDownAction();
 					myScroll.refresh();
 					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar...</span>';
+					$("#pullDown").removeClass("loading");
 				}
 				//
 				
