@@ -185,6 +185,7 @@
 					//obtengo la posicion actual del gps
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
+					document.getElementById("thelist").innerHTML="Espere un momento por favor";
                 }
 				//lectura gps
 				

@@ -24,7 +24,6 @@ function abrirBaseDatos()
 
 function crearRegistros(tx)
 {
-	alert("crea registros");
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
@@ -48,7 +47,7 @@ function mostrarResultados(tx,resultados)
 	var lista = "";
 	//var contenedor = document.getElementById('scroller');
 	//var ancho = contenedor.offsetWidth;
-	alert("Resultados BD"+resultados.rows.length);
+	
 	//
 	if(resultados.rows.length==0)
 	{
@@ -103,14 +102,10 @@ var fechaact = "";
 function agregarMasacresSQL(tx)
 {
 	var nume = masacrearray.length;
-	alert("nume:"+nume);
 	var elemactual = new Array();
 	for(i = 0; i < nume ; i++)
 	{
 		var cadtexto = elemactual[2];
-		//var abstract = cadtexto.replace('"',"'");
-		//var abstract = $('#tempo').html(cadtexto).text();
-		//alert(cadtexto);
 		elemactual = masacrearray[i];
 		nidact = elemactual[0];
 		nombreact = elemactual[1];
@@ -121,11 +116,8 @@ function agregarMasacresSQL(tx)
 		fechacre = elemactual[6];
 		fechaact = elemactual[7];
 		
-		//tx.executeSql('SELECT * FROM MASACRES WHERE nid='+nidact+' ORDER BY nid DESC LIMIT 0,1',[],resultExiste,errorDB)
 		tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES (?,?,?,?,?,?,?,?)',[nidact,nombreact,descripcionact,ubicacionact,imagenact,fechainicioact,fechacre,fechaact]);
-		//tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("'+nidact+'","'+nombreact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'")');
-		//tx.executeSql('INSERT IGNORE INTO  MASACRES SET nid="'+nidact+'",nombre="'+nombreact+'",descripcion="'+descripcionact+'",ubicacion="'+ubicacionact+'",imagen="'+imagenact+'",fechainicio="'+fechainicioact+'",fecha_creacion="'+fechacre+'",fecha_actualizacion="'+fechaact+'"');
-		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
+		
 	}
 	
 }
@@ -145,7 +137,7 @@ function resultLastUpdate(tx,resultados)
 	fechaupd = resultados.rows.item(0).fecha_actualizacion;
 }
 function cargaXMLMasacres() {
-	alert(fechaupd)
+	
 	masacrearray = [];
 	nidsarray = [];
 	$.ajax({
@@ -192,7 +184,6 @@ function cargaXMLMasacres() {
 function creacionMasacres()
 {
 	listado = nidsarray.join(",");
-	alert("listado:"+listado)
 	db = window.openDatabase("masacres","1.0","Masacres App",200000);
 	db.transaction(borrarRepetidas,errorDB,agregarMasacres);	
 }
