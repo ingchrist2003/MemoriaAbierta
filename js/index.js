@@ -244,30 +244,24 @@
 				  });
 				  //hasta aca call del slider de radio de distancia
 				  
-				  $( ".go" ).click(function() {
+				  $( "#pullDown" ).click(function() {
 					  if(listadoshow == true)
 					  {
-						  $('#go1').css({ display: "none"});
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
 							top: "+="+heightvar+"px"
 						  }, 1500 ); 
-						  $('#currenttitle').css({ top: "+="+heightvar+"px"});
 						  listadoshow = false;
-						  $('#go2').css({ display: "block"});
 					  }else{
-						  $('#go2').css({ display: "none"});
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
 							top: "-="+heightvar+"px"
 						  }, 1500 );
-						  $('#currenttitle').css({ top: "-="+heightvar+"px"});
 						  listadoshow = true;
-						  $('#go1').css({ display: "block"});
 					  }
 					 
 				  });
