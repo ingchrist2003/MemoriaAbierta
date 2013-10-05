@@ -47,7 +47,7 @@ function mostrarResultados(tx,resultados)
 	var lista = "";
 	//var contenedor = document.getElementById('scroller');
 	//var ancho = contenedor.offsetWidth;
-	
+	masacresarray.length = 0;
 	//
 	if(resultados.rows.length==0)
 	{
