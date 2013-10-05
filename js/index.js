@@ -171,7 +171,7 @@
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
 					myScroll.refresh();
-					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar...</span>';
+					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí para ocultar / mostrar...</span>';
 					$("#pullDown").removeClass("loading");
 				}
 				//
@@ -251,7 +251,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "+="+heightvar+"px"
+							top: "+="+(heightvar-51)+"px"
 						  }, 1500 ); 
 						  listadoshow = false;
 					  }else{
@@ -259,7 +259,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "-="+heightvar+"px"
+							top: "-="+(heightvar-51)+"px"
 						  }, 1500 );
 						  listadoshow = true;
 					  }
