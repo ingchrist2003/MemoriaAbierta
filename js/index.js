@@ -182,7 +182,6 @@
 					navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
 					//
 					actualizarMasacres()
-					leerBaseDatos();
                 }
 				//lectura gps
 				

@@ -106,7 +106,7 @@ var fechaact = "";
 function agregarMasacresSQL(tx)
 {
 	var nume = masacrearray.length;
-	
+	alert("nume:"+nume);
 	var elemactual = new Array();
 	for(i = 0; i < nume ; i++)
 	{
@@ -150,7 +150,7 @@ function resultLastUpdate(tx,resultados)
 	fechaupd = resultados.rows.item(0).fecha_actualizacion;
 }
 function cargaXMLMasacres() {
-	//alert(fechaupd)
+	alert(fechaupd)
 	masacrearray = [];
 	nidsarray = [];
 	$.ajax({
