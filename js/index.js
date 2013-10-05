@@ -75,14 +75,11 @@
 				function creacionMapa()
 				{
 					latlng = new google.maps.LatLng(latitud,longitud);
-					alert("lat"+latitud);
-					alert("lon"+longitud);
                     var mapOptions = {
                         zoom: 8,
                         center: latlng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
-					alert("dos")
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                                               mapOptions);
                     //creamos un nuevo marcador en el mapa
@@ -91,17 +88,27 @@
                                                       map:map
                                                       })
 					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
-					alert("tres")
-					
-					//ahora obtenemos la info de las masacres
-					//markers.push(marcador);
-					//
-					
-					//luego de la creación del mapa
-					//creamos la base de datos
-					alert("cuatro")
+					//creación de los registros de la base de datos
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
-					alert("ppp");
+				}
+				function creacionMapaActualiza()
+				{
+					latlng = new google.maps.LatLng(latitud,longitud);
+                    var mapOptions = {
+                        zoom: 8,
+                        center: latlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById('map_canvas'),
+                                              mapOptions);
+                    //creamos un nuevo marcador en el mapa
+                    marcador = new google.maps.Marker({
+                                                      position: latlng,
+                                                      map:map
+                                                      })
+					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
+					//creación de los registros de la base de datos
+					actualizarMasacres();
 				}
 				
 				function creacionPuntosMasacres()
@@ -171,17 +178,13 @@
 					//obtengo la posicion actual del gps
 					var arrayposition = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{
 						enableHighAccuracy: true
-			
 					});
-					
-					
                 }
 				
                 function refrescarApp() {
 					//obtengo la posicion actual del gps
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
-					
                 }
 				//lectura gps
 				
@@ -191,17 +194,12 @@
 					longitud = position.coords.longitude;
 					alert("latitud: "+latitud+" longitud: "+longitud);
 					creacionMapa(); 
-					
-					
                 }
 				function lecturaGPSActualiza(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					alert("Actualiza   latitud: "+latitud+" longitud: "+longitud);
-					creacionMapa(); 
-					actualizarMasacres();
-					
+					creacionMapaActualiza(); 
                 }
                 function errorGPS(error)
                 {

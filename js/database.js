@@ -74,11 +74,7 @@ function mostrarResultados(tx,resultados)
 			
 		}
 	}
-	//document.getElementById("thelist").innerHTML=lista;
 	creacionPuntosMasacres();
-	//document.getElementById("lista1").innerHTML=lista;
-	//pullDownAction();
-	//myScroll.refresh();
 }
 
 
@@ -137,8 +133,6 @@ function agregarMasacresSQL(tx)
 
 function actualizarMasacres()
 {
-	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
 	db.transaction(actualizarMasacreBD,errorDB,cargaXMLMasacres);
 }
 function actualizarMasacreBD(tx)
@@ -197,7 +191,6 @@ function cargaXMLMasacres() {
 
 function creacionMasacres()
 {
-	
 	listado = nidsarray.join(",");
 	alert("listado:"+listado)
 	db = window.openDatabase("masacres","1.0","Masacres App",200000);
