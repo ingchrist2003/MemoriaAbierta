@@ -75,13 +75,14 @@
 				function creacionMapa()
 				{
 					latlng = new google.maps.LatLng(latitud,longitud);
-					//alert(latitud);
-					//alert(longitud);
+					alert("lat"+latitud);
+					alert("lon"+longitud);
                     var mapOptions = {
                         zoom: 8,
                         center: latlng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
+					alert("dos")
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                                               mapOptions);
                     //creamos un nuevo marcador en el mapa
@@ -90,7 +91,7 @@
                                                       map:map
                                                       })
 					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
-					
+					alert("tres")
 					
 					//ahora obtenemos la info de las masacres
 					markers.push(marcador);
@@ -98,7 +99,7 @@
 					
 					//luego de la creación del mapa
 					//creamos la base de datos
-					
+					alert("cuatro")
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					alert("ppp");
 				}
