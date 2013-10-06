@@ -172,10 +172,10 @@
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
 								'<br /><span ><b>Ampliar</b></span>'+
 								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" onclick="ocultar('+idmasacre+')">'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br />'+descactual+
-								'<br /><span ><b>Ocultar</b></span>'+
+								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -213,10 +213,10 @@
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
 								'<br /><span ><b>Ampliar</b></span>'+
 								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" onclick="ocultar('+idmasacre+')">'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br />'+descactual+
-								'<br /><span ><b>Ocultar</b></span>'+
+								'<br /><span onclick="ocultar('+idmasacre+')" ><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
