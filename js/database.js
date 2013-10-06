@@ -151,8 +151,9 @@ function agregarMasacresSQL(tx)
 	var elemactual = new Array();
 	for(i = 0; i < nume ; i++)
 	{
-		var cadtexto = elemactual[2];
+		
 		var elemactual = masacrearray[i];
+		var cadtexto = elemactual[2];
 		var nidact = elemactual[0];
 		var nombreact = elemactual[1];
 		var descripcionact =  cadtexto;
