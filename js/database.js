@@ -104,7 +104,7 @@ function generaDeptoDB(tx)
 function mostrarDepartamentos(tx,resultados)
 {
 	var cadena = "";
-	//
+	// 
 	
 	if(resultados.rows.length==0)
 	{
