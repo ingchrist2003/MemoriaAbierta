@@ -105,6 +105,7 @@ function mostrarDepartamentos(tx,resultados)
 {
 	var cadena = "";
 	//
+	alert(resultados.rows.length)
 	if(resultados.rows.length==0)
 	{
 		//alert("No hay registros de masacres");
