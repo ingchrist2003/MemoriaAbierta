@@ -83,7 +83,7 @@ function mostrarResultados(tx,resultados)
 			masacre[5] = departamento;
 			masacre[6] = municipio;
 			masacre[7] = grupoarmado;
-			masacre[9] = numvictimas;
+			masacre[8] = numvictimas;
             masacresarray.push(masacre);
 			
 			
