@@ -131,6 +131,8 @@
 						var imaactual = elemactual[4];
 						var depaactual = elemactual[5];
 						var muniactual = elemactual[6];
+						var grupoarmado = elemactual[7];
+						var numvictimas = elemactual[8];
 						var latiactual = posiactual[0];
 						var lngactual = posiactual[1];
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
@@ -174,6 +176,10 @@
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
+								'<br /><b>Departamento:</b> '+depaactual+
+								'<br /><b>Municipio:</b> '+muniactual+
+								'<br /><b>Grupo Armado:</b> '+grupoarmado+
+								'<br /><b>Número Víctimas:</b> '+numvictimas+
 								'<br />'+descactual+
 								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
@@ -215,8 +221,12 @@
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
+								'<br /><b>Departamento:</b> '+depaactual+
+								'<br /><b>Municipio:</b> '+muniactual+
+								'<br /><b>Grupo Armado:</b> '+grupoarmado+
+								'<br /><b>Número Víctimas:</b> '+numvictimas+
 								'<br />'+descactual+
-								'<br /><span onclick="ocultar('+idmasacre+')" ><b>Ocultar</b></span>'+
+								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+

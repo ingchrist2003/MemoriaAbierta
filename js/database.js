@@ -25,7 +25,7 @@ function abrirBaseDatos()
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (id INTEGER PRIMARY KEY AUTOINCREMENT,nid INTEGER NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (id INTEGER PRIMARY KEY AUTOINCREMENT,nid INTEGER NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,grupoarmado TEXT  NULL,numvictimas TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
 }
 /*Noticias*/
@@ -73,6 +73,8 @@ function mostrarResultados(tx,resultados)
 			var imagen = resultados.rows.item(i).imagen;
 			var departamento = resultados.rows.item(i).departamento;
 			var municipio = resultados.rows.item(i).municipio;
+			var grupoarmado = resultados.rows.item(i).grupoarmado;
+			var numvictimas = resultados.rows.item(i).numvictimas;
             masacre[0] = idmasacre;
             masacre[1] = nombre;
             masacre[2] = ubicacion;
@@ -80,6 +82,8 @@ function mostrarResultados(tx,resultados)
 			masacre[4] = imagen;
 			masacre[5] = departamento;
 			masacre[6] = municipio;
+			masacre[7] = grupoarmado;
+			masacre[9] = numvictimas;
             masacresarray.push(masacre);
 			
 			
@@ -164,9 +168,10 @@ function agregarMasacresSQL(tx)
 		var fechaact = elemactual[7];
 		var departamento = elemactual[8];
 		var municipio = elemactual[9];
+		var grupoarmado = elemactual[10];
+		var numvictimas = elemactual[11];
 		
-		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'")');
-		
+		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'")');
 		
 	}
 	
@@ -205,6 +210,8 @@ function cargaXMLMasacres() {
 				var municipio = $(this).find('municipio').text();
 				var ubicacion = $(this).find('ubicacion').text();
 				var imagen = $(this).find('imagen').text();
+				var grupoarmado = $(this).find('grupoarmado').text();
+				var numvictimas = $(this).find('numero_victimas').text();
 				var fechainicio = $(this).find('fechainicio').text();
 				var fechacre = $(this).find('fecha_creacion').text();
 				var fechaupd = $(this).find('fecha_actualizacion').text();
@@ -219,6 +226,8 @@ function cargaXMLMasacres() {
 				masacre[7] = fechaupd;
 				masacre[8] = departamento;
 				masacre[9] = municipio;
+				masacre[10] = grupoarmado;
+				masacre[11] = numvictimas;
 				
 				
                 
