@@ -25,7 +25,7 @@ function abrirBaseDatos()
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULLimagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
 }
 /*Noticias*/
@@ -38,7 +38,10 @@ function leerBaseDatos()
 
 function leerBD(tx)
 {
-	tx.executeSql('SELECT * FROM MASACRES ORDER BY nid DESC',[],mostrarResultados,errorDB)
+	if(searchvalue=="")
+		tx.executeSql('SELECT * FROM MASACRES ORDER BY id DESC',[],mostrarResultados,errorDB);
+	else
+		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ?  ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
 }	
 
 
@@ -63,11 +66,15 @@ function mostrarResultados(tx,resultados)
             var ubicacion = resultados.rows.item(i).ubicacion;
             var descripcion = abstract.substring(0,200);
 			var imagen = resultados.rows.item(i).imagen;
+			var departamento = resultados.rows.item(i).departamento;
+			var municipio = resultados.rows.item(i).municipio;
             masacre[0] = idmasacre;
             masacre[1] = nombre;
             masacre[2] = ubicacion;
             masacre[3] = descripcion;
 			masacre[4] = imagen;
+			masacre[5] = departamento;
+			masacre[6] = municipio;
             masacresarray.push(masacre);
 			
 			
@@ -151,6 +158,8 @@ function cargaXMLMasacres() {
 				var nid = $(this).find('idmasacre').text();
 				var nombre = $(this).find('nombre').text();
 				var descripcion = $(this).find('descripcion').text();
+				var departamento = $(this).find('departamento').text();
+				var municipio = $(this).find('municipio').text();
 				var ubicacion = $(this).find('ubicacion').text();
 				var imagen = $(this).find('imagen').text();
 				var fechainicio = $(this).find('fechainicio').text();

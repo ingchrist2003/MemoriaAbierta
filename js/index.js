@@ -40,6 +40,7 @@
 				var heightvar="";
 				var topvar="";
 				var db = window.openDatabase("masacres","1.0","Masacres App",200000);
+				var searchvalue = "";
 				
 				function callItem(numero)
 				{
@@ -126,6 +127,8 @@
 						var nombremasacre = elemactual[1];
 						var descactual = elemactual[3];
 						var imaactual = elemactual[4];
+						var depaactual = elemactual[5];
+						var muniactual = elemactual[6];
 						var latiactual = posiactual[0];
 						var lngactual = posiactual[1];
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
@@ -189,6 +192,16 @@
 					//
 					document.getElementById("thelist").innerHTML="Espere un momento por favor";
                 }
+				
+				//generar busqueda
+				function searchUpdate(valor) {
+					//obtengo la posicion actual del gps
+					searchvalue=valor;
+					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					//
+					document.getElementById("thelist").innerHTML="Espere un momento por favor";
+                }
+				//
 				//lectura gps
 				
 				function lecturaGPS(position)
