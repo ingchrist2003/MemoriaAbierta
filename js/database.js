@@ -38,10 +38,15 @@ function leerBaseDatos()
 
 function leerBD(tx)
 {
-	if(searchvalue=="")
+	if(searchvalue=="" && searchdepto=="")
 		tx.executeSql('SELECT * FROM MASACRES ORDER BY id DESC',[],mostrarResultados,errorDB);
-	else
+	else if(searchvalue!="" && searchdepto=="")
 		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ?  ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
+	else if(searchvalue=="" && searchdepto!="")
+		tx.executeSql('SELECT * FROM MASACRES WHERE departamento LIKE ?  ORDER BY id DESC',["%"+searchdepto+"%"],mostrarResultados,errorDB);
+	else if(searchvalue!="" && searchdepto!="")
+		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ? or departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
+		
 }	
 
 
@@ -83,6 +88,39 @@ function mostrarResultados(tx,resultados)
 	creacionPuntosMasacres();
 }
 
+function generarDepartamentos()
+{
+	var db;
+	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db.transaction(generaDeptoDB,errorDB);
+}
+
+function generaDeptoDB(tx)
+{
+		tx.executeSql('SELECT DISTINCT departamento FROM MASACRES ORDER BY departamento ASC',[],mostrarDepartamentos,errorDB);	
+}	
+
+
+function mostrarDepartamentos(tx,resultados)
+{
+	var cadena = "";
+	//
+	if(resultados.rows.length==0)
+	{
+		//alert("No hay registros de masacres");
+	}else{
+		cadena = '<option value="">Todos</option>';
+		for(i=0;i<resultados.rows.length;i++)
+		{
+			var deptoactual = resultados.rows.item(i).departamento;
+			if(searchdepto==deptoactual)
+				cadena += '<option value="'+deptoactual+'" selected>'+deptoactual+'</option>';
+			else
+				cadena += '<option value="'+deptoactual+'">'+deptoactual+'</option>';
+		}
+		document.getElementById("departamento").innerHTML=cadena;
+	}
+}
 
 
 function borrarRepetidas(tx)
@@ -126,7 +164,7 @@ function agregarMasacresSQL(tx)
 		var municipio = elemactual[9];
 		
 		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'")');
-		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
+		
 		
 	}
 	

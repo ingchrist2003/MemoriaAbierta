@@ -41,6 +41,7 @@
 				var topvar="";
 				var db = window.openDatabase("masacres","1.0","Masacres App",200000);
 				var searchvalue = "";
+				var searchdepto = "";
 				
 				function callItem(numero)
 				{
@@ -176,6 +177,7 @@
 					myScroll.refresh();
 					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí</span>';
 					$("#pullDown").removeClass("loading");
+					generarDepartamentos();
 				}
 				//
 				
@@ -197,6 +199,15 @@
 				function searchUpdate(valor) {
 					//obtengo la posicion actual del gps
 					searchvalue=valor;
+					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					//
+					document.getElementById("thelist").innerHTML="Espere un momento por favor";
+                }
+				//
+				//generar busqueda por departamento
+				function searchDepto(valor) {
+					//obtengo la posicion actual del gps
+					searchdepto=valor;
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
 					document.getElementById("thelist").innerHTML="Espere un momento por favor";
