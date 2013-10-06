@@ -267,7 +267,7 @@
 					//obtengo la posicion actual del gps
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
-					document.getElementById("thelist").innerHTML="Espere un momento por favor";
+					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
 				
 				//generar busqueda
@@ -276,7 +276,7 @@
 					searchvalue=valor;
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
-					document.getElementById("thelist").innerHTML="Espere un momento por favor";
+					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
 				//
 				//generar busqueda por departamento
@@ -285,7 +285,7 @@
 					searchdepto=valor;
 					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
 					//
-					document.getElementById("thelist").innerHTML="Espere un momento por favor";
+					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
 				//
 				//lectura gps
