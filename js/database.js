@@ -63,13 +63,13 @@ function mostrarResultados(tx,resultados)
 	}else{
 		for(i=0;i<resultados.rows.length;i++)
 		{
-			var abstract = resultados.rows.item(i).descripcion;
+			
 			//alert("item"+resultados.rows.item(i).nid)
 			var masacre = new Array();
             var idmasacre = resultados.rows.item(i).nid;
             var nombre = resultados.rows.item(i).nombre;
             var ubicacion = resultados.rows.item(i).ubicacion;
-            var descripcion = abstract.substring(0,200);
+            var descripcion = resultados.rows.item(i).descripcion;
 			var imagen = resultados.rows.item(i).imagen;
 			var departamento = resultados.rows.item(i).departamento;
 			var municipio = resultados.rows.item(i).municipio;

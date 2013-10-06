@@ -127,6 +127,7 @@
 						var idmasacre = elemactual[0];
 						var nombremasacre = elemactual[1];
 						var descactual = elemactual[3];
+						var abstractual = descactual.substring(0,200);
 						var imaactual = elemactual[4];
 						var depaactual = elemactual[5];
 						var muniactual = elemactual[6];
