@@ -168,14 +168,14 @@
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts">'+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
-								'<br /><span onclick="ampliar('+idmasacre+')"><b>Ampliar</b></span>'+
+								'<br /><span ><b>Ampliar</b></span>'+
 								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos">'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" onclick="ocultar('+idmasacre+')">'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br />'+descactual+
-								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
+								'<br /><span ><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -209,14 +209,14 @@
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts">'+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
-								'<br /><span onclick="ampliar('+idmasacre+')"><b>Ampliar</b></span>'+
+								'<br /><span ><b>Ampliar</b></span>'+
 								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos">'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" onclick="ocultar('+idmasacre+')">'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br />'+descactual+
-								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
+								'<br /><span ><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
