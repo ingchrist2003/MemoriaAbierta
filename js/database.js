@@ -45,7 +45,7 @@ function leerBD(tx)
 	else if(searchvalue=="" && searchdepto!="")
 		tx.executeSql('SELECT * FROM MASACRES WHERE departamento LIKE ?  ORDER BY id DESC',["%"+searchdepto+"%"],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto!="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ? or departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ?) and departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
 		
 }	
 
