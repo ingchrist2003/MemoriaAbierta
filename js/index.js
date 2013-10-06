@@ -178,8 +178,8 @@
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br /><b>Departamento:</b> '+depaactual+
 								'<br /><b>Municipio:</b> '+muniactual+
-								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br /><b>Número Víctimas:</b> '+numvictimas+
+								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descactual+
 								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
@@ -223,8 +223,8 @@
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
 								'<br /><b>Departamento:</b> '+depaactual+
 								'<br /><b>Municipio:</b> '+muniactual+
-								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br /><b>Número Víctimas:</b> '+numvictimas+
+								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descactual+
 								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
