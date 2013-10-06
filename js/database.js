@@ -105,7 +105,7 @@ function mostrarDepartamentos(tx,resultados)
 {
 	var cadena = "";
 	//
-	alert(resultados.rows.length)
+	
 	if(resultados.rows.length==0)
 	{
 		//alert("No hay registros de masacres");
@@ -216,6 +216,8 @@ function cargaXMLMasacres() {
 				masacre[5] = ubicacion;
 				masacre[6] = fechacre;
 				masacre[7] = fechaupd;
+				masacre[8] = departamento;
+				masacre[9] = municipio;
 				
 				
                 
