@@ -167,7 +167,15 @@
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+descactual+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
+								'<br /><span onclick="ampliar('+idmasacre+')"><b>Ampliar</b></span>'+
+								'</div>'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
+								'<br />'+descactual+
+								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
+								'</div>'+
 								'</td>'+
 								'</tr>'+
 								'</table></li>';
@@ -200,7 +208,15 @@
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+descactual+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
+								'<br /><span onclick="ampliar('+idmasacre+')"><b>Ampliar</b></span>'+
+								'</div>'+
+								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
+								'<br />'+descactual+
+								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
+								'</div>'+
 								'</td>'+
 								'</tr>'+
 								'</table></li>';
@@ -217,7 +233,18 @@
 					generarDepartamentos();
 				}
 				//
-				
+				function ampliar(idmasacre)
+				{
+					document.getElementById("abstract_"+idmasacre).style.display="none";
+					document.getElementById("content_"+idmasacre).style.display="block";
+					myScroll.refresh();
+				}
+				function ocultar(idmasacre)
+				{
+					document.getElementById("content_"+idmasacre).style.display="none";
+					document.getElementById("abstract_"+idmasacre).style.display="block";
+					myScroll.refresh();
+				}
                 function initialize() {
 					//obtengo la posicion actual del gps
 					var arrayposition = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{
