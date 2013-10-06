@@ -137,38 +137,75 @@
 						//distancia en kilometros por eso se divide en mil
 						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
 						
-						if(distance < radiokm)
+						if(document.getElementById("activaradio1").checked==true)
 						{
-							//si cumple con la distancia agregamos un marcador al mapa
-							//1. Agregando el marcador al mapa
-                            stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
-                            '<tr>'+
-                            '<td valign="top" >'+
-                            '<b><a href="#" onclick="callItem('+j+')">'+nombremasacre+'</a></b>'+
-                            '</td>'+
-                            '</tr>'+
-                            '</table>';
+							if(distance < radiokm)
+							{
+								
+								//si cumple con la distancia agregamos un marcador al mapa
+								//1. Agregando el marcador al mapa
+								stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								'<tr>'+
+								'<td valign="top" >'+
+								'<b><a href="#" onclick="callItem('+j+')">'+nombremasacre+'</a></b>'+
+								'</td>'+
+								'</tr>'+
+								'</table>';
+								
+								var marker = new google.maps.Marker({
+																	position: locationlatlng,
+																	map:map,
+																	icon: "images/icono.png"
+																	});
+								makeInfoWindowEvent(map, infowindow, stringvar, marker);
+								
+								
+								//2.Agregando al listado
+								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								'<tr>'+
+								'<td valign="top">'+
+								'<img  src="images/icono.png"/>'+
+								'</td>'+
+								'<td valign="top">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+descactual+
+								'</td>'+
+								'</tr>'+
+								'</table></li>';
+								j++;
+							}
+							//
+						}else{
+								//si cumple con la distancia agregamos un marcador al mapa
+								//1. Agregando el marcador al mapa
+								stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								'<tr>'+
+								'<td valign="top" >'+
+								'<b><a href="#" onclick="callItem('+j+')">'+nombremasacre+'</a></b>'+
+								'</td>'+
+								'</tr>'+
+								'</table>';
+								
+								var marker = new google.maps.Marker({
+																	position: locationlatlng,
+																	map:map,
+																	icon: "images/icono.png"
+																	});
+								makeInfoWindowEvent(map, infowindow, stringvar, marker);
+								
+								
+								//2.Agregando al listado
+								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								'<tr>'+
+								'<td valign="top">'+
+								'<img  src="images/icono.png"/>'+
+								'</td>'+
+								'<td valign="top">'+
+								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+descactual+
+								'</td>'+
+								'</tr>'+
+								'</table></li>';
+								j++;
 							
-							var marker = new google.maps.Marker({
-                                                                position: locationlatlng,
-                                                                map:map,
-																icon: "images/icono.png"
-                                                                });
-							makeInfoWindowEvent(map, infowindow, stringvar, marker);
-							
-							
-							//2.Agregando al listado
-							stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
-                            '<tr>'+
-							'<td valign="top">'+
-                            '<img  src="images/icono.png"/>'+
-                            '</td>'+
-                            '<td valign="top">'+
-                            '<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+descactual+
-                            '</td>'+
-                            '</tr>'+
-                            '</table></li>';
-							j++;
 						}
 						//
 					}
@@ -232,6 +269,15 @@
                     alert("Error while retrieving current position. <br/>Error code: " + error.code + "<br/>Message: " + error.message);
 					
                 }
+				
+				function activaRadio()
+				{
+					if(document.getElementById("activaradio2").checked==true)
+						$('#slider-mini').slider('disable');
+					else
+						$('#slider-mini').slider('enable');
+					refrescarApp();
+				}
                 
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {

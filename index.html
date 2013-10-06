@@ -41,14 +41,22 @@
                 	data-theme="a" data-content-theme="a">
                         <h3>RADIO EN KM</h3>
                         <p>
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+                            <legend>Activar o desactivar radio de distancia:</legend>
+                                <input type="radio" name="activaradio" id="activaradio1" value="si" checked="checked" onClick="activaRadio()" />
+                                <label for="activaradio1">On</label>
+                    
+                                <input type="radio" name="activaradio" id="activaradio2" value="no" onClick="activaRadio()" />
+                                <label for="activaradio2">Off</label>	
+                        </fieldset><br>
                         Deslice el slider para seleccionar el radio de distancia desde su ubicación actual.<br>
-                        <label for="slider-mini">Km:</label>
-						<input type="range" name="slider-mini" id="slider-mini" value="50" min="50" max="1000" data-highlight="true" data-mini="true" />
+                        <input type="range" name="slider-mini" id="slider-mini" value="50" min="50" max="1000" data-highlight="true" data-mini="true"
+                         readonly />
                         </p>
                 	</div>
                 	<div data-role="collapsible" data-collapsed="false" id="number4" data-inset="false" data-mini="true" 
                     data-theme="a" data-content-theme="a">
-                        <h3>FILTROS</h3>
+                        <h3>DEPARTAMENTO</h3>
                         <p>Seleccione el departamento<br>
                         <select name="departamento" id="departamento" onChange="searchDepto(this.value)">
                         <option value="">Todos</option>
