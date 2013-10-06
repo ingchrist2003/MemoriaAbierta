@@ -25,7 +25,7 @@ function abrirBaseDatos()
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY NOT NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (id INTEGER PRIMARY KEY AUTOINCREMENT,nid INTEGER NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	
 }
 /*Noticias*/
@@ -113,17 +113,20 @@ function agregarMasacresSQL(tx)
 	for(i = 0; i < nume ; i++)
 	{
 		var cadtexto = elemactual[2];
-		elemactual = masacrearray[i];
-		nidact = elemactual[0];
-		nombreact = elemactual[1];
-		descripcionact =  cadtexto;
-		imagenact = elemactual[3];
-		fechainicioact = elemactual[4];
-		ubicacionact = elemactual[5];
-		fechacre = elemactual[6];
-		fechaact = elemactual[7];
+		var elemactual = masacrearray[i];
+		var nidact = elemactual[0];
+		var nombreact = elemactual[1];
+		var descripcionact =  cadtexto;
+		var imagenact = elemactual[3];
+		var fechainicioact = elemactual[4];
+		var ubicacionact = elemactual[5];
+		var fechacre = elemactual[6];
+		var fechaact = elemactual[7];
+		var departamento = elemactual[8];
+		var municipio = elemactual[9];
 		
-		tx.executeSql('INSERT OR REPLACE INTO MASACRES (nid,nombre,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES (?,?,?,?,?,?,?,?)',[nidact,nombreact,descripcionact,ubicacionact,imagenact,fechainicioact,fechacre,fechaact]);
+		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'")');
+		//tx.executeSql('INSERT INTO MASACRES (nid,nombre,ubicacion,descripcion,imagen,fechainicio,fecha_creacion,fecha_actualizacion)  VALUES ("1","christian","20,29","bla","imagen.jpg","2013-08-25","2013-08-25","2013-08-25")');
 		
 	}
 	
