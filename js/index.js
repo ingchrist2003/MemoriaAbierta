@@ -319,12 +319,12 @@
                 
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
-                	$( "#myPanel").panel("open", {display: "overlay", position: "left"} );
+                	//$( "#myPanel").panel("open", {display: "overlay", position: "left"} );
+					$.mobile.panel.prototype.options.initSelector = "#myPanel";
 					
-					$( "#mypanel" ).trigger( "updatelayout" );
                 });
 				
-				 
+				 $( "#mypanel" ).trigger( "updatelayout" );
 				
 				
 
