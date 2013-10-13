@@ -319,7 +319,7 @@
                 
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
-                	$( "#myPanel").panel("open", {display: "overlay", position: "left"} );
+                	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
 					
                 });
 				
