@@ -31,7 +31,12 @@
 					overflow: scroll;
 					-webkit-overflow-scrolling: touch;
 				}
-				</style>
+				<script type="text/javascript">
+				$(document).bind("pageinit", function()
+				{
+				$.event.special.swipe.scrollSupressionThreshold = 100;
+				});
+				</script></style>
                 
             </head>
     <body >
