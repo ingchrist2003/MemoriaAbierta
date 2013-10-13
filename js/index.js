@@ -320,10 +320,10 @@
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
                 	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
-					
+					$( "#mypanel" ).trigger( "updatelayout" );
                 });
 				
-				 $( "#mypanel" ).trigger( "updatelayout" );
+				 
 				
 				
 
@@ -350,6 +350,7 @@
 					   //alert(radiokm);
 					   radiokm = radiokm*1/1;
 					   refrescarApp();
+					   $(document ).trigger( "updatelayout" );
 				  });
 				  //hasta aca call del slider de radio de distancia
 				  
