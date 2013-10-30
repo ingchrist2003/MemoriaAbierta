@@ -366,7 +366,7 @@
 							marginBottom: "0.6in",
 							borderWidth: "10px",
 							top: "+="+(heightvar-150)+"px"
-						  }, 1500 ); 
+						  }, 100 ); 
 						  listadoshow = false;
 					  }else{
 						  $( "#wrapper" ).animate({
@@ -374,7 +374,7 @@
 							marginBottom: "0.6in",
 							borderWidth: "10px",
 							top: "-="+(heightvar-150)+"px"
-						  }, 1500 );
+						  }, 100 );
 						  listadoshow = true;
 					  }
 					 
