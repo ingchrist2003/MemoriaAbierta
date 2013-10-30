@@ -320,6 +320,7 @@
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
                 	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
+					$( "#myPanel").panel( "refresh" );
 					$( "#mypanel" ).trigger( "updatelayout" );
                 });
 				
