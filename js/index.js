@@ -39,7 +39,7 @@
 				var pantallaheight="";
 				var heightvar="";
 				var topvar="";
-				var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+				var db = window.openDatabase("masacres","1.0","Masacres App",200000);
 				var searchvalue = "";
 				var searchdepto = "";
 				
