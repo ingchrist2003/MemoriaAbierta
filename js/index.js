@@ -295,14 +295,14 @@
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapa(); 
-					$( "#mypanel" ).trigger( "pagecreate" );
+					$( "#mypanel" ).trigger( "create" );
                 }
 				function lecturaGPSActualiza(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapaActualiza(); 
-					$( "#mypanel" ).trigger( "pagecreate" );
+					$( "#mypanel" ).trigger( "create" );
                 }
                 function errorGPS(error)
                 {
@@ -323,7 +323,7 @@
 				$(document).on("swiperight", function(event, ui) {
                 	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
 					
-					$( "#mypanel" ).trigger( "pagecreate" );
+					$( "#mypanel" ).trigger( "create" );
                 });
 				
 				 
