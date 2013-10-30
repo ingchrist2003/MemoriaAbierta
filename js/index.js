@@ -363,7 +363,7 @@
 					  {
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
-							marginBottom: "0.6in",
+							marginBottom: "1in",
 							borderWidth: "10px",
 							top: "+="+(heightvar-100)+"px"
 						  }, 1500 ); 
@@ -371,7 +371,7 @@
 					  }else{
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
-							marginBottom: "0.6in",
+							marginBottom: "1in",
 							borderWidth: "10px",
 							top: "-="+(heightvar-100)+"px"
 						  }, 1500 );
