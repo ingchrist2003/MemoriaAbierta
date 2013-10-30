@@ -320,8 +320,7 @@
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
                 	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
-					$( "#myPanel").panel( "refresh" );
-					$( "#mypanel" ).trigger( "updatelayout" );
+					$('[data-role=page]').trigger('pagecreate');
                 });
 				
 				 
@@ -356,6 +355,7 @@
 				  //hasta aca call del slider de radio de distancia
 				  
 				  $( "#pullDown" ).click(function() {
+					  $('[data-role=page]').trigger('pagecreate');
 					  if(listadoshow == true)
 					  {
 						  $( "#wrapper" ).animate({
