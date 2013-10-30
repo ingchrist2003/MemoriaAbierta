@@ -338,7 +338,7 @@
 				  //ajusta tamaño layer google maps
 				  $('#map_canvas').height(window_height);
 				  $('#map_canvas').width($('[data-role="header"]').width());
-				  $('#map_canvas').css({ top: header_height+"px" });
+				  $('#map_canvas').css({ top: (header_height+20)+"px" });
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4);
