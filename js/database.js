@@ -18,7 +18,7 @@ var nidsarray = new Array() ;
 function abrirBaseDatos()
 {
 	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(crearRegistros,errorDB,leerBaseDatos);	
 }
 
@@ -32,7 +32,7 @@ function crearRegistros(tx)
 function leerBaseDatos()
 {
 	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(leerBD,errorDB);
 }
 
@@ -95,7 +95,7 @@ function mostrarResultados(tx,resultados)
 function generarDepartamentos()
 {
 	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(generaDeptoDB,errorDB);
 }
 
@@ -136,7 +136,7 @@ function borrarRepetidas(tx)
 function agregarMasacres()
 {
 	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(agregarMasacresSQL,errorDB,leerBaseDatos);
 }
 
@@ -247,7 +247,7 @@ function cargaXMLMasacres() {
 function creacionMasacres()
 {
 	listado = nidsarray.join(",");
-	db = window.openDatabase("masacres","1.0","Masacres App",200000);
+	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(borrarRepetidas,errorDB,agregarMasacres);	
 }
 
