@@ -140,7 +140,7 @@
 						//distancia en kilometros por eso se divide en mil
 						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
 						
-						if(document.getElementById("activaradio1").checked==true)
+						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="")
 						{
 							if(distance < radiokm)
 							{
@@ -295,14 +295,12 @@
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapa(); 
-					$( "#mypanel" ).trigger( "create" );
                 }
 				function lecturaGPSActualiza(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapaActualiza(); 
-					$( "#mypanel" ).trigger( "create" );
                 }
                 function errorGPS(error)
                 {
