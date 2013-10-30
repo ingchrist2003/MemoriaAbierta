@@ -22,7 +22,7 @@
 	height:35px;
 }
 #wrapper {
-	position:absolute; z-index:1;
+	position:relative; z-index:1;
 	top:500px;
 	left:-9999px;
 	width:100%;
