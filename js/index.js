@@ -295,12 +295,14 @@
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapa(); 
+					$( "#mypanel" ).trigger( "pagecreate" );
                 }
 				function lecturaGPSActualiza(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
 					creacionMapaActualiza(); 
+					$( "#mypanel" ).trigger( "pagecreate" );
                 }
                 function errorGPS(error)
                 {
@@ -320,7 +322,8 @@
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
                 	$( "#myPanel").panel("open", {display: "reveal", position: "left"} );
-					$('[data-role=page]').trigger('pagecreate');
+					
+					$( "#mypanel" ).trigger( "pagecreate" );
                 });
 				
 				 
@@ -355,7 +358,6 @@
 				  //hasta aca call del slider de radio de distancia
 				  
 				  $( "#pullDown" ).click(function() {
-					  $('[data-role=page]').trigger('pagecreate');
 					  if(listadoshow == true)
 					  {
 						  $( "#wrapper" ).animate({
