@@ -365,7 +365,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "+="+(heightvar-51)+"px"
+							top: "+="+(heightvar-100)+"px"
 						  }, 1500 ); 
 						  listadoshow = false;
 					  }else{
@@ -373,7 +373,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "-="+(heightvar-51)+"px"
+							top: "-="+(heightvar-10)+"px"
 						  }, 1500 );
 						  listadoshow = true;
 					  }
