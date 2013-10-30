@@ -363,17 +363,17 @@
 					  {
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
-							marginBottom: "1in",
+							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "+="+(heightvar-100)+"px"
+							top: "+="+(heightvar-150)+"px"
 						  }, 1500 ); 
 						  listadoshow = false;
 					  }else{
 						  $( "#wrapper" ).animate({
 							opacity: 0.8,
-							marginBottom: "1in",
+							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "-="+(heightvar-100)+"px"
+							top: "-="+(heightvar-150)+"px"
 						  }, 1500 );
 						  listadoshow = true;
 					  }
