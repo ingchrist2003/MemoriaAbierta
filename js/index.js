@@ -238,6 +238,7 @@
 					}
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
+					$( "#mypanel" ).trigger( "create" );
 					myScroll.refresh();
 					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí</span>';
 					$("#pullDown").removeClass("loading");
@@ -354,7 +355,7 @@
 					   //alert(radiokm);
 					   radiokm = radiokm*1/1;
 					   refrescarApp();
-					   $(document ).trigger( "updatelayout" );
+					   $( "#mypanel" ).trigger( "create" );
 				  });
 				  //hasta aca call del slider de radio de distancia
 				  
