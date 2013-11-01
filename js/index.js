@@ -192,8 +192,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
-								'<br /><span ><b>Ampliar</b></span>'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br />'+abstractual+
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
@@ -202,7 +201,6 @@
 								'<br /><b>Número Víctimas:</b> '+numvictimas+
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descactual+
-								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -240,8 +238,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b><br />'+abstractual+
-								'<br /><span ><b>Ampliar</b></span>'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br />'+abstractual+
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
@@ -250,7 +247,6 @@
 								'<br /><b>Número Víctimas:</b> '+numvictimas+
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descactual+
-								'<br /><span onclick="ocultar('+idmasacre+')"><b>Ocultar</b></span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -281,15 +277,15 @@
 				//
 				function ampliar(idmasacre)
 				{
-					document.getElementById("abstract_"+idmasacre).style.display="none";
-					document.getElementById("content_"+idmasacre).style.display="block";
-					myScroll.refresh();
-				}
-				function ocultar(idmasacre)
-				{
-					document.getElementById("content_"+idmasacre).style.display="none";
-					document.getElementById("abstract_"+idmasacre).style.display="block";
-					myScroll.refresh();
+					var cadenaNoticia=document.getElementById("content_"+idmasacre).innerHTML;
+					
+					$("#detallemasacre").html(cadenaNoticia);
+					
+					//myScroll2 = new iScroll('wrapper2',{ hScrollbar: false,hScroll: false });//detalle masacre
+					setTimeout(function () { myScroll2.refresh(); myScroll2.scrollTo(0, 0);}, 800);
+	
+					
+					
 				}
                 function initialize() {
 					//obtengo la posicion actual del gps
