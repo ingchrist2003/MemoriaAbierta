@@ -11,8 +11,8 @@ var imagen;
 var listado = "";
 var fechacre = "";
 var fechaupd = ""; //fecha de la última actualización 
-var masacrearray = new Array() ;
-var nidsarray = new Array() ;
+var masacrearray;
+var nidsarray;
 //
 
 function abrirBaseDatos()
@@ -20,24 +20,27 @@ function abrirBaseDatos()
 	var db;
 	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(crearRegistros,errorDB,leerBaseDatos);	
+	db = null;
 }
 
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (id INTEGER PRIMARY KEY AUTOINCREMENT,nid INTEGER NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,grupoarmado TEXT  NULL,numvictimas TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx = null;
 	
 }
 /*Noticias*/
 function leerBaseDatos()
 {
-	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(leerBD,errorDB);
+	db = null;
 }
 
 function leerBD(tx)
 {
+	
 	if(searchvalue=="" && searchdepto=="")
 		tx.executeSql('SELECT * FROM MASACRES ORDER BY id DESC',[],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto=="")
@@ -47,6 +50,7 @@ function leerBD(tx)
 	else if(searchvalue!="" && searchdepto!="")
 		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ?) and departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
 		
+	tx = null;
 }	
 
 
@@ -55,12 +59,15 @@ function mostrarResultados(tx,resultados)
 	var lista = "";
 	//var contenedor = document.getElementById('scroller');
 	//var ancho = contenedor.offsetWidth;
-	masacresarray.length = 0;
+	
+	masacresarray = null;
+	masacresarray = new Array() ;
 	//
 	if(resultados.rows.length==0)
 	{
-		//alert("No hay registros de masacres");
+		alert("No hay registros de masacres");
 	}else{
+		
 		for(i=0;i<resultados.rows.length;i++)
 		{
 			
@@ -86,30 +93,35 @@ function mostrarResultados(tx,resultados)
 			masacre[8] = numvictimas;
             masacresarray.push(masacre);
 			
-			
+			masacre = null;
 		}
 	}
+	//alert("numArray:"+masacresarray.length);
+	//document.getElementById("thelist").innerHTML=lista;
 	creacionPuntosMasacres();
+	//document.getElementById("lista1").innerHTML=lista;
+	//pullDownAction();
+	//myScroll.refresh();
 }
 
 function generarDepartamentos()
 {
-	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(generaDeptoDB,errorDB);
+	db = null;
 }
 
 function generaDeptoDB(tx)
 {
 		tx.executeSql('SELECT DISTINCT departamento FROM MASACRES ORDER BY departamento ASC',[],mostrarDepartamentos,errorDB);	
+		tx = null;
 }	
 
 
 function mostrarDepartamentos(tx,resultados)
 {
 	var cadena = "";
-	// 
-	
+	//
 	if(resultados.rows.length==0)
 	{
 		//alert("No hay registros de masacres");
@@ -118,37 +130,32 @@ function mostrarDepartamentos(tx,resultados)
 		for(i=0;i<resultados.rows.length;i++)
 		{
 			var deptoactual = resultados.rows.item(i).departamento;
-			if(searchdepto==deptoactual)
-				cadena += '<option value="'+deptoactual+'" selected>'+deptoactual+'</option>';
-			else
-				cadena += '<option value="'+deptoactual+'">'+deptoactual+'</option>';
+			if(deptoactual!="")
+			{
+				if(searchdepto==deptoactual)
+					cadena += '<option value="'+deptoactual+'" selected>'+deptoactual+'</option>';
+				else
+					cadena += '<option value="'+deptoactual+'">'+deptoactual+'</option>';
+			}
 		}
 		document.getElementById("departamento").innerHTML=cadena;
 	}
 }
 
 
+
 function borrarRepetidas(tx)
 {
 	
 	tx.executeSql('DELETE FROM MASACRES WHERE nid in ('+listado+') ')
+	tx = null;
 }
 function agregarMasacres()
 {
-	var db;
-	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(agregarMasacresSQL,errorDB,leerBaseDatos);
+	db=null;
 }
-
-var nidact = "";
-var nombreact = "";
-var descripcionact =  "";
-var imagenact = "";
-var fechainicioact = "";
-var ubicacionact = "";
-var fechacre = "";
-var fechaact = "";
-
 function agregarMasacresSQL(tx)
 {
 	var nume = masacrearray.length;
@@ -173,28 +180,36 @@ function agregarMasacresSQL(tx)
 		
 		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'")');
 		
-	}
+		
 	
+	}
+	nume = null;
+	elemactual = null;
+	tx = null;
 }
-
 
 function actualizarMasacres()
 {
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(actualizarMasacreBD,errorDB,cargaXMLMasacres);
+	db = null;
 }
 function actualizarMasacreBD(tx)
 {
 	tx.executeSql('SELECT * FROM MASACRES ORDER BY fecha_actualizacion DESC LIMIT 0,1',[],resultLastUpdate,errorDB)
+	tx = null;
 }	
 function resultLastUpdate(tx,resultados)
 {
 	if(resultados.rows.length>0)
 	fechaupd = resultados.rows.item(0).fecha_actualizacion;
+	
 }
 function cargaXMLMasacres() {
-	
-	masacrearray = [];
-	nidsarray = [];
+	masacrearray = null;
+	nidsarray = null;
+	masacrearray = new Array() ;
+	nidsarray = new Array() ;
 	$.ajax({
     	type: "GET",
         url: "http://www.thethinkercloud.com/christian/masacres/masacres.php?fechaupd="+fechaupd,
@@ -202,6 +217,7 @@ function cargaXMLMasacres() {
         dataType: "xml",
         success: function(xml) {
 			$(xml).find('masacre').each(function(){
+				
 				var masacre = new Array();
 				var nid = $(this).find('idmasacre').text();
 				var nombre = $(this).find('nombre').text();
@@ -233,6 +249,7 @@ function cargaXMLMasacres() {
                 
 				masacrearray.push(masacre);
 				nidsarray.push(nid);
+				masacre = null;
 			});
 			
 			creacionMasacres();
@@ -246,9 +263,12 @@ function cargaXMLMasacres() {
 
 function creacionMasacres()
 {
+	
 	listado = nidsarray.join(",");
-	db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 	db.transaction(borrarRepetidas,errorDB,agregarMasacres);	
+	db = null;
 }
 
 // Transaction error callback

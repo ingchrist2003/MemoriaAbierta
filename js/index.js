@@ -26,12 +26,13 @@
 				
                 var map;
 				var radiokm = 50; //radio de n km a la redonda de la posicion actual del usuario
-				var latlng;
-                var marcador;
+				
+                var latlng;
 				var longitud;
 				var latitud;
-				var infowindow = new google.maps.InfoWindow();
-				var masacresarray = new Array() ;
+				var markers = [];
+				
+				var masacresarray  ;
 				var listadoshow = true;
 				var header_height="";
 				var footer_height="";
@@ -39,7 +40,7 @@
 				var pantallaheight="";
 				var heightvar="";
 				var topvar="";
-				var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+				
 				var searchvalue = "";
 				var searchdepto = "";
 				
@@ -73,74 +74,94 @@
                                                   infowindow.setContent(contentString);
                                                   infowindow.open(map, marker);
                                                   });
+					return 0;
 				}
+				
+				function borrarMarcadores() {
+				  for (var i = 0; i < markers.length; i++) {
+					markers[i].setMap(null);
+				  }
+				}
+				
 				function creacionMapa()
 				{
+					
 					latlng = new google.maps.LatLng(latitud,longitud);
-                    var mapOptions = {
+					
+					var mapOptions = {
                         zoom: 8,
                         center: latlng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
                     map = new google.maps.Map(document.getElementById('map_canvas'),
                                               mapOptions);
-                    //creamos un nuevo marcador en el mapa
-                    marcador = new google.maps.Marker({
-                                                      position: latlng,
-                                                      map:map
-                                                      })
-					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
+					 //creamos un nuevo marcador en el mapa
+                    
+					//mapa
 					//creación de los registros de la base de datos
+					var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
+					return 0;
 				}
+				
 				function creacionMapaActualiza()
 				{
+					
+					
 					latlng = new google.maps.LatLng(latitud,longitud);
-                    var mapOptions = {
-                        zoom: 8,
-                        center: latlng,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById('map_canvas'),
-                                              mapOptions);
-                    //creamos un nuevo marcador en el mapa
-                    marcador = new google.maps.Marker({
-                                                      position: latlng,
-                                                      map:map
-                                                      })
-					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
-					//creación de los registros de la base de datos
+                    //creación de los registros de la base de datos
 					actualizarMasacres();
+					return 0;
 				}
 				
 				function creacionPuntosMasacres()
 				{
-					var num = masacresarray.length;
 					
+					var num = masacresarray.length;
+					var infowindow = new google.maps.InfoWindow();
 					var elemactual = new Array();
+					//mapa
+					borrarMarcadores();
+                   
+					var marcador = new google.maps.Marker({
+                                                      position: latlng,
+                                                      map:map
+                                                      })
+					makeInfoWindowEvent(map, infowindow, "Mi posión actual", marcador);
+					markers.push(marcador);
+					
 					var stringvar2 = "";
 					var j=1;
 					for(i = 0; i < num ; i++)
 					{
+						
 						var elemactual = masacresarray[i];
 						var posiactual=elemactual[2].split(",");
 						var idmasacre = elemactual[0];
 						var nombremasacre = elemactual[1];
 						var descactual = elemactual[3];
-						var abstractual = descactual.substring(0,200);
 						var imaactual = elemactual[4];
 						var depaactual = elemactual[5];
+						var abstractual = descactual.substring(0,200);
 						var muniactual = elemactual[6];
 						var grupoarmado = elemactual[7];
 						var numvictimas = elemactual[8];
+						
 						var latiactual = posiactual[0];
 						var lngactual = posiactual[1];
 						//ahora buscamos la distancia entre la posicion actual y la de cada masacre
+						
 						var locationlatlng = new google.maps.LatLng(latiactual,lngactual);
 						//distancia en kilometros por eso se divide en mil
-						distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
 						
-						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="")
+						
+							
+						var distance = (google.maps.geometry.spherical.computeDistanceBetween(latlng, locationlatlng)/1000).toFixed(2);
+						
+						//if(i>num-5)
+							//alert("puntos masacres lat:"+latiactual+" long"+lngactual);
+							
+						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="" )
 						{
 							if(distance < radiokm)
 							{
@@ -161,7 +182,7 @@
 																	icon: "images/icono.png"
 																	});
 								makeInfoWindowEvent(map, infowindow, stringvar, marker);
-								
+								markers.push(marker);
 								
 								//2.Agregando al listado
 								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
@@ -187,10 +208,13 @@
 								'</tr>'+
 								'</table></li>';
 								j++;
+								marker = null;
+								stringvar = null;
+								
 							}
 							//
 						}else{
-								//si cumple con la distancia agregamos un marcador al mapa
+								
 								//1. Agregando el marcador al mapa
 								stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
@@ -206,7 +230,7 @@
 																	icon: "images/icono.png"
 																	});
 								makeInfoWindowEvent(map, infowindow, stringvar, marker);
-								
+								markers.push(marker);
 								
 								//2.Agregando al listado
 								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
@@ -232,15 +256,26 @@
 								'</tr>'+
 								'</table></li>';
 								j++;
+								marker = null;
+								stringvar = null;
+								
 							
 						}
-						//
+						
 					}
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
 					myScroll.refresh();
 					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí</span>';
+					
 					$("#pullDown").removeClass("loading");
+					stringvar2 = null;
+					
+					marcador = null;
+					masacrearray = null;
+					nidsarray = null;
+					masacresarray = null;
+					distance = null;
 					generarDepartamentos();
 				}
 				//
@@ -260,12 +295,22 @@
 					//obtengo la posicion actual del gps
 					var arrayposition = navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{
 						enableHighAccuracy: true
-					});
+					});//
+					
                 }
 				
                 function refrescarApp() {
 					//obtengo la posicion actual del gps
-					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					//alert("refrescando 1");
+					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza2,errorGPS,{enableHighAccuracy:true});
+					//
+					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
+                }
+				function refrescarAppSinGPS() {
+					//obtengo la posicion actual del gps
+					//alert("refrescando 1");
+					//navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					leerBaseDatos();
 					//
 					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
@@ -274,7 +319,8 @@
 				function searchUpdate(valor) {
 					//obtengo la posicion actual del gps
 					searchvalue=valor;
-					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					//navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					leerBaseDatos();
 					//
 					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
@@ -283,39 +329,45 @@
 				function searchDepto(valor) {
 					//obtengo la posicion actual del gps
 					searchdepto=valor;
-					navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					//navigator.geolocation.getCurrentPosition(lecturaGPSActualiza,errorGPS,{enableHighAccuracy:true});
+					leerBaseDatos();
 					//
 					document.getElementById("thelist").innerHTML="<li >Espere un momento por favor</li>";
                 }
+				
 				//
 				//lectura gps
-				
 				function lecturaGPS(position)
                 {
                     latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					creacionMapa(); 
+					creacionMapa();
+					
                 }
-				function lecturaGPSActualiza(position)
+				function lecturaGPSActualiza2(position)
                 {
-                    latitud = position.coords.latitude;
+					latitud = position.coords.latitude;
 					longitud = position.coords.longitude;
-					creacionMapaActualiza(); 
+                    creacionMapaActualiza(); 
+                }
+				function lecturaGPSActualiza()
+                {
+					
+                   creacionMapaActualiza(); 
                 }
                 function errorGPS(error)
                 {
-                    alert("Error while retrieving current position. <br/>Error code: " + error.code + "<br/>Message: " + error.message);
-					
+                    alert("Gps no disponible");
                 }
-				
+                
 				function activaRadio()
 				{
 					if(document.getElementById("activaradio2").checked==true)
 						$('#slider-mini').slider('disable');
 					else
 						$('#slider-mini').slider('enable');
-					refrescarApp();
-				}
+					refrescarAppSinGPS();
+				}	
                 
 				//hasta aca lectura gps
 				$(document).on("swiperight", function(event, ui) {
