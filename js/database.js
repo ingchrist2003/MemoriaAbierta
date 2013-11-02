@@ -212,7 +212,7 @@ function cargaXMLMasacres() {
 	nidsarray = new Array() ;
 	$.ajax({
     	type: "GET",
-        url: "http://www.thethinkercloud.com/christian/masacres/masacres.php?fechaupd="+fechaupd,
+        url: "http://rutasdelconflicto.com/masacres.php?fechaupd="+fechaupd,
 		data: 'fechaupd='+fechaupd,
         dataType: "xml",
         success: function(xml) {
