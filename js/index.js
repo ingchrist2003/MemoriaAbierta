@@ -192,7 +192,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br />'+abstractual+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" data-transition="none" >'+nombremasacre+'</a></b><br />'+abstractual+
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
