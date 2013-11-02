@@ -99,7 +99,7 @@
                     
 					//mapa
 					//creación de los registros de la base de datos
-					var db = window.openDatabase("masacres","1.0","Masacres App",2000000);
+					var db = window.openDatabase("masacres","1.0","Masacres App",10000000);
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					return 0;
 				}
