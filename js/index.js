@@ -99,7 +99,7 @@
                     
 					//mapa
 					//creación de los registros de la base de datos
-					var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+					var db = window.openDatabase("masacres","1.0","Masacres App",2000000);
 					db.transaction(crearRegistros,errorDB,cargaXMLMasacres);
 					return 0;
 				}
@@ -238,7 +238,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br />'+abstractual+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" data-transition="none">'+nombremasacre+'</a></b><br />'+abstractual+
 								'</div>'+
 								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
 								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
