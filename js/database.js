@@ -44,11 +44,11 @@ function leerBD(tx)
 	if(searchvalue=="" && searchdepto=="")
 		tx.executeSql('SELECT * FROM MASACRES ORDER BY id DESC',[],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto=="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ?  ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ? or palabras_clave like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
 	else if(searchvalue=="" && searchdepto!="")
 		tx.executeSql('SELECT * FROM MASACRES WHERE departamento LIKE ?  ORDER BY id DESC',["%"+searchdepto+"%"],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto!="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ?) and departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ? or palabras_clave like ?) and departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
 		
 	tx = null;
 }	
@@ -222,8 +222,9 @@ function agregarMasacresSQL(tx)
 		var municipio = elemactual[9];
 		var grupoarmado = elemactual[10];
 		var numvictimas = elemactual[11];
+		var palabrasclave = elemactual[12];
 		
-		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'")');
+		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas,palabras_clave)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'","'+palabrasclave+'")');
 		
 		
 	
@@ -276,6 +277,7 @@ function cargaXMLMasacres() {
 				var fechainicio = $(this).find('fechainicio').text();
 				var fechacre = $(this).find('fecha_creacion').text();
 				var fechaupd = $(this).find('fecha_actualizacion').text();
+				var palabrasclave = $(this).find('palabras_clave').text();
 				
 				masacre[0] = nid;
                 masacre[1] = nombre;
@@ -289,6 +291,7 @@ function cargaXMLMasacres() {
 				masacre[9] = municipio;
 				masacre[10] = grupoarmado;
 				masacre[11] = numvictimas;
+				masacre[12] = palabrasclave;
 				
 				
                 
