@@ -108,7 +108,7 @@ var masacreshow = "";
 function updateImage(idmasacre)
 {
 	masacreshow = idmasacre;
-	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	var db = window.openDatabase("masacres","1.0","Masacres App",10000000);
 	db.transaction(buscaImagen,errorDB);
 	db = null;
 }
