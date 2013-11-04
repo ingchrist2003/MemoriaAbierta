@@ -194,7 +194,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" class="link" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -234,7 +234,7 @@
 								'</td>'+
 								'<td valign="top">'+
 								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail"  class="link" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
