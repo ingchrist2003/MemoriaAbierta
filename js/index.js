@@ -168,10 +168,12 @@
 								
 								//si cumple con la distancia agregamos un marcador al mapa
 								//1. Agregando el marcador al mapa
-								stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar = '<table border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top" >'+
-								'<b><a href="#" onclick="callItem('+j+')">'+nombremasacre+'</a></b>'+
+								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
+								'<br>Grupo Armado: '+grupoarmado+''+
+								'<br>Número Víctimas: '+numvictimas+''+
 								'</td>'+
 								'</tr>'+
 								'</table>';
@@ -185,22 +187,14 @@
 								markers.push(marker);
 								
 								//2.Agregando al listado
-								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top">'+
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" data-transition="none" >'+nombremasacre+'</a></b><br />'+abstractual+
-								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
-								'<br /><b>Departamento:</b> '+depaactual+
-								'<br /><b>Municipio:</b> '+muniactual+
-								'<br /><b>Número Víctimas:</b> '+numvictimas+
-								'<br /><b>Grupo Armado:</b> '+grupoarmado+
-								'<br />'+descactual+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -214,10 +208,12 @@
 						}else{
 								
 								//1. Agregando el marcador al mapa
-								stringvar = '<table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar = '<table border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top" >'+
-								'<b><a href="#" onclick="callItem('+j+')">'+nombremasacre+'</a></b>'+
+								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
+								'<br>Grupo Armado: '+grupoarmado+''+
+								'<br>Número Víctimas: '+numvictimas+''+
 								'</td>'+
 								'</tr>'+
 								'</table>';
@@ -231,22 +227,14 @@
 								markers.push(marker);
 								
 								//2.Agregando al listado
-								stringvar2 += '<li  ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top">'+
 								'<img  src="images/icono.png"/>'+
 								'</td>'+
 								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" data-transition="none">'+nombremasacre+'</a></b><br />'+abstractual+
-								'</div>'+
-								'<div id="content_'+idmasacre+'" style="display:none" class="contenidos" >'+
-								'<b><a name="masacre_'+idmasacre+'">'+nombremasacre+'</a></b>'+
-								'<br /><b>Departamento:</b> '+depaactual+
-								'<br /><b>Municipio:</b> '+muniactual+
-								'<br /><b>Número Víctimas:</b> '+numvictimas+
-								'<br /><b>Grupo Armado:</b> '+grupoarmado+
-								'<br />'+descactual+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
+								'<b><a name="masacre_'+idmasacre+'" href="#detail" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
 								'</div>'+
 								'</td>'+
 								'</tr>'+
@@ -277,15 +265,7 @@
 				//
 				function ampliar(idmasacre)
 				{
-					var cadenaNoticia=document.getElementById("content_"+idmasacre).innerHTML;
-					
-					$("#detallemasacre").html(cadenaNoticia);
-					
-					//myScroll2 = new iScroll('wrapper2',{ hScrollbar: false,hScroll: false });//detalle masacre
-					setTimeout(function () { myScroll2.refresh(); myScroll2.scrollTo(0, 0);}, 800);
-	
-					
-					
+					updateImage(idmasacre);
 				}
                 function initialize() {
 					//obtengo la posicion actual del gps
@@ -377,6 +357,14 @@
 				
 
 				$(function () {
+					$( "#detail" ).on( "pageshow", function( event, ui ) {
+					  //$("#detallemasacre").html(cadenaNoticia);
+					  //alert(cadenaNoticia)
+						document.getElementById('detallemasacre').innerHTML=cadenaNoticia;
+						$("#wrapper2").height(window_height-100);
+						myScroll2.refresh(); 
+						myScroll2.scrollTo(0,0);
+					});
                   header_height  = $('[data-role="header"]').height();
                   footer_height  = $('[data-role="footer"]').height();
                   window_height  = ($(this).height())-header_height-footer_height-30;

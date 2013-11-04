@@ -104,6 +104,51 @@ function mostrarResultados(tx,resultados)
 	//myScroll.refresh();
 }
 
+var masacreshow = "";
+function updateImage(idmasacre)
+{
+	masacreshow = idmasacre;
+	var db = window.openDatabase("masacres","1.0","Masacres App",1000000);
+	db.transaction(buscaImagen,errorDB);
+	db = null;
+}
+
+function buscaImagen(tx)
+{
+		tx.executeSql('SELECT * FROM MASACRES WHERE nid = ? ',[masacreshow],cargaImagen,errorDB);	
+		tx = null;
+}	
+
+
+function cargaImagen(tx,resultados)
+{
+	var cadena = "";
+	//
+	if(resultados.rows.length==0)
+	{
+		//alert("No hay registros de masacres");
+	}else{
+		var idmasacre = resultados.rows.item(0).nid;
+        var nombre = resultados.rows.item(0).nombre;
+        var descripcion = resultados.rows.item(0).descripcion;
+		var imagen = resultados.rows.item(0).imagen;
+		var departamento = resultados.rows.item(0).departamento;
+		var municipio = resultados.rows.item(0).municipio;
+		var grupoarmado = resultados.rows.item(0).grupoarmado;
+		var numvictimas = resultados.rows.item(0).numvictimas;
+		cadenaNoticia='<div id="content_'+idmasacre+'" >'+
+								'<h2 class="link">'+nombre+'</h2>'+
+								'<center><img src="'+imagen+'" width="80%" style="max-width:80%;margin:10px" ></center>'+
+								'<br /><b>Departamento:</b> '+departamento+
+								'<br /><b>Municipio:</b> '+municipio+
+								'<br /><b>Número Víctimas:</b> '+numvictimas+
+								'<br /><b>Grupo Armado:</b> '+grupoarmado+
+								'<br />'+descripcion+
+								'</div>';
+		
+		
+	}
+}
 function generarDepartamentos()
 {
 	var db = window.openDatabase("masacres","1.0","Masacres App",10000000);
