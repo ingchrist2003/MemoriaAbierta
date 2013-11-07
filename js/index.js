@@ -161,7 +161,7 @@
 						//if(i>num-5)
 							//alert("puntos masacres lat:"+latiactual+" long"+lngactual);
 							
-						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="" )
+						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="" && document.getElementById('search-header').value=="" )
 						{
 							if(distance < radiokm)
 							{
