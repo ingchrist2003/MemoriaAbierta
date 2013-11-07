@@ -132,6 +132,7 @@
 					
 					var stringvar2 = "";
 					var j=1;
+					setcentro = false;	
 					for(i = 0; i < num ; i++)
 					{
 						
@@ -163,6 +164,11 @@
 							
 						if(document.getElementById("activaradio1").checked==true && document.getElementById('departamento').value=="" && document.getElementById('search-header').value=="" )
 						{
+							if(setcentro == false) //defino el centro con el marcador de mi posicion actual
+							{
+									map.setCenter(marcador.getPosition());
+									setcentro = true;	
+							}
 							if(distance < radiokm)
 							{
 								
@@ -185,6 +191,8 @@
 																	});
 								makeInfoWindowEvent(map, infowindow, stringvar, marker);
 								markers.push(marker);
+								
+								
 								
 								//2.Agregando al listado
 								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
@@ -225,7 +233,11 @@
 																	});
 								makeInfoWindowEvent(map, infowindow, stringvar, marker);
 								markers.push(marker);
-								
+								if(setcentro == false)//defino el centro con el primer marcador de la busqueda
+								{
+									map.setCenter(marker.getPosition());
+									setcentro = true;	
+								}
 								//2.Agregando al listado
 								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
