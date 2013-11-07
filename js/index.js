@@ -195,15 +195,15 @@
 								
 								
 								//2.Agregando al listado
-								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar2 += '<li ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top">'+
-								'<img  src="images/icono.png"/>'+
+								'<img  src="images/icono.png" onclick="ampliar('+idmasacre+')"/>'+
 								'</td>'+
-								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail" class="link" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
-								'</div>'+
+								'<td valign="top"><a name="masacre_'+idmasacre+'" href="#detail"  >'+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
+								'<b>'+nombremasacre+'</b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
+								'</div></a>'+
 								'</td>'+
 								'</tr>'+
 								'</table></li>';
@@ -239,15 +239,15 @@
 									setcentro = true;	
 								}
 								//2.Agregando al listado
-								stringvar2 += '<li onclick="ampliar('+idmasacre+')" ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
+								stringvar2 += '<li ><table width="100%" border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
 								'<td valign="top">'+
-								'<img  src="images/icono.png"/>'+
+								'<img  src="images/icono.png" onclick="ampliar('+idmasacre+')"/>'+
 								'</td>'+
-								'<td valign="top">'+
-								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" >'+
-								'<b><a name="masacre_'+idmasacre+'" href="#detail"  class="link" >'+nombremasacre+'</a></b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
-								'</div>'+
+								'<td valign="top"><a name="masacre_'+idmasacre+'" href="#detail"  >'+
+								'<div id="abstract_'+idmasacre+'" style="display:block" class="abstracts" onclick="ampliar('+idmasacre+')">'+
+								'<b>'+nombremasacre+'</b><br /><span onclick="ampliar('+idmasacre+')">'+abstractual+'</span>'+
+								'</div></a>'+
 								'</td>'+
 								'</tr>'+
 								'</table></li>';
