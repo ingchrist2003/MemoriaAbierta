@@ -176,7 +176,7 @@
 								//1. Agregando el marcador al mapa
 								stringvar = '<table border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
-								'<td valign="top" style="font-size:14px">'+
+								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
 								'<br>Grupo Armado: '+grupoarmado+''+
 								'<br>Número Víctimas: '+numvictimas+''+
@@ -218,7 +218,7 @@
 								//1. Agregando el marcador al mapa
 								stringvar = '<table border="0" cellspacing="2" cellpadding="2">'+
 								'<tr>'+
-								'<td valign="top" style="font-size:14px">'+
+								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
 								'<br>Grupo Armado: '+grupoarmado+''+
 								'<br>Número Víctimas: '+numvictimas+''+
