@@ -405,22 +405,7 @@
 				  //hasta aca call del slider de radio de distancia
 				  
 				  $("#compartir").click(function() {
-					 cordova.exec(function(result){
-                        return;
-                     }, function(err) {
-                        return;
-                     }, "social", "share", ['My text with a link: http://domain.com', 'My subject', 'www/image.gif']);
-        			
-					  window.plugins.socialsharing.available(function(isAvailable) {
-					  if (isAvailable) {
-						
-						window.plugins.socialsharing.share('My text');
-					   
-					  }else{
-						alert("paila");  
-					  }
-					});
-					 window.plugins.socialsharing.share('My text with a link: http://domain.com', 'My subject', 'www/image.gif');
+					window.plugins.socialsharing.share(descripcionShare);
 				  });
 				  $( "#pullDown" ).click(function() {
 					  if(listadoshow == true)
