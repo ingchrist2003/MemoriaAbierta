@@ -431,4 +431,12 @@
                 });
 
 				
-				
+				window.plugins.socialsharing.available(function(isAvailable) {
+  if (isAvailable) {
+    
+    window.plugins.socialsharing.share('My text');
+   
+  }else{
+	alert("paila");  
+  }
+});
