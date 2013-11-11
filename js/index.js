@@ -403,7 +403,14 @@
 					   
 				  });
 				  //hasta aca call del slider de radio de distancia
-				  
+				  $("#compartir").click(function() {
+					 cordova.exec(function(result){
+                        return;
+                     }, function(err) {
+                        return;
+                     }, "social", "share", [descripcionShare, urlShare, imageShare]);
+        			
+				  });
 				  $( "#pullDown" ).click(function() {
 					  if(listadoshow == true)
 					  {

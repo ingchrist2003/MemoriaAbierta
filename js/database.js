@@ -13,6 +13,9 @@ var fechacre = "";
 var fechaupd = ""; //fecha de la última actualización 
 var masacrearray;
 var nidsarray;
+var descripcionShare;
+var urlShare;
+var imageShare;
 //
 
 function abrirBaseDatos()
@@ -145,7 +148,9 @@ function cargaImagen(tx,resultados)
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descripcion+
 								'</div>';
-		
+		descripcionShare = "Rutas del Conflicto - Fundación Ideas para la Paz \nhttp://rutasdelconflicto.com  \nMasacre: "+nombre+"\n"+departamento+"\n"+municipio;
+		urlShare="http://www.rutasdelconflicto.com";
+		imageShare="Icon-40.png";
 		
 	}
 }
