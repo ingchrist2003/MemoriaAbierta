@@ -405,7 +405,7 @@
 				  //hasta aca call del slider de radio de distancia
 				  
 				  $("#compartir").click(function() {
-					 //window.plugins.socialsharing.share('My text with a link: http://domain.com', 'My subject', 'www/image.gif');
+					 window.plugins.socialsharing.share('My text with a link: http://domain.com', 'My subject', 'www/image.gif');
 				  });
 				  $( "#pullDown" ).click(function() {
 					  if(listadoshow == true)
