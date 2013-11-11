@@ -45,9 +45,7 @@
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-	<feature name="SocialSharing">
-	  <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
-	</feature>
+	
     <!-- Plugins can also be added here. -->
     <!--
         <gap:plugin name="Example" />
@@ -69,7 +67,9 @@
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
     <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
 
-	
+	<feature name="SocialSharing">
+	  <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+	</feature>
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />
     <!--
         Define access to external domains.
