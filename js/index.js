@@ -403,13 +403,15 @@
 					   
 				  });
 				  //hasta aca call del slider de radio de distancia
+				  window.plugins.socialsharing.available(function(isAvailable) {
+					  if (isAvailable) {
+						  alert("disponible")
+					  }else{
+						  alert("no disponible")
+					  }
+				  });
 				  $("#compartir").click(function() {
-					 cordova.exec(function(result){
-                        return;
-                     }, function(err) {
-                        return;
-                     }, "social", "share", [descripcionShare, urlShare, imageShare]);
-        			
+					 window.plugins.socialsharing.share('My text with a link: http://domain.com', 'My subject', 'www/image.gif');
 				  });
 				  $( "#pullDown" ).click(function() {
 					  if(listadoshow == true)
