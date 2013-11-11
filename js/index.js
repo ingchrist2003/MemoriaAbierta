@@ -426,6 +426,14 @@
 					 
 				  });
                 });
-				
+window.plugins.socialsharing.available(function(isAvailable) {
+  		if (isAvailable) {
+    // use a local image from inside the www folder:
+    	window.plugins.socialsharing.share('My text with a link: http://domain.com', 'My subject', 'www/image.gif'); // succes/error callback params may be added as 4th and 5th param
+    // .. or a local image from anywhere else (if permitted):
+    // local-iOS:
+  		}
+	}
+  );
 				
 				
