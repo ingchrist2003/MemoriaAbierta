@@ -67,14 +67,8 @@
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
     <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
 	
-	<feature name="Geolocation">
-		<param name="android-package" value="org.apache.cordova.GeoBroker" />
-	</feature>
-
-	<feature name="SocialSharing">
-	  <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
-	</feature>
-	<gap:plugin name="nl.x-services.plugins.socialsharing" />
+	
+	
     <!--
         Define access to external domains.
 
