@@ -259,6 +259,8 @@
 						}
 						
 					}
+					if(i==0)
+						stringvar2 = "<li >No hay registros de masacres</li>";
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
 					myScroll.refresh();

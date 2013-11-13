@@ -68,7 +68,7 @@ function mostrarResultados(tx,resultados)
 	//
 	if(resultados.rows.length==0)
 	{
-		alert("No hay registros de masacres");
+		//document.getElementById("thelist").innerHTML="<li >No hay registros de masacres</li>";
 	}else{
 		
 		for(i=0;i<resultados.rows.length;i++)
