@@ -126,6 +126,35 @@ function buscaImagen(tx)
 function cargaImagen(tx,resultados)
 {
 	var cadena = "";
+	var vecdepa = new Array();
+	vecdepa['antioquia'] = "Antioquia";
+	vecdepa['arauca'] = "Arauca";
+	vecdepa['atlantico'] = "Atlántico";
+	vecdepa['bolivar'] = "Bolívar";
+	vecdepa['boyaca'] = "Boyacá";
+	vecdepa['caldas'] = "Caldas";
+	vecdepa['caqueta'] = "Caquetá";
+	vecdepa['casanare'] = "Casanare";
+	vecdepa['cauca'] = "Cauca";
+	vecdepa['cesar'] = "Cesar";
+	vecdepa['choco'] = "Chocó";
+	vecdepa['cordoba'] = "Córdoba";
+	vecdepa['cundinamarca'] = "Cundinamarca";
+	vecdepa['guajira'] = "Guajira";
+	vecdepa['guaviare'] = "Guaviare";
+	vecdepa['huila'] = "Huila";
+	vecdepa['magdalena'] = "Magdalena";
+	vecdepa['meta'] = "Meta";
+	vecdepa['narino'] = "Nariño";
+	vecdepa['norte_santander'] = "Norte de Santander";
+	vecdepa['putumayo'] = "Putumayo";
+	vecdepa['quindio'] = "Quindío";
+	vecdepa['risaralda'] = "Risaralda";
+	vecdepa['santander'] = "Santander";
+	vecdepa['sucre'] = "Sucre";
+	vecdepa['tolima'] = "Tolima";
+	vecdepa['valle'] = "Valle";
+	vecdepa['vichada'] = "Vichada";
 	//
 	if(resultados.rows.length==0)
 	{
@@ -142,7 +171,7 @@ function cargaImagen(tx,resultados)
 		cadenaNoticia='<div id="content_'+idmasacre+'" >'+
 								'<h2 class="link">'+nombre+'</h2>'+
 								'<center><img src="'+imagen+'" width="80%" style="max-width:80%;margin:10px" ></center>'+
-								'<br /><b>Departamento:</b> '+departamento+
+								'<br /><b>Departamento:</b> '+vecdepa[departamento]+
 								'<br /><b>Municipio:</b> '+municipio+
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br /><br />'+descripcion+
@@ -152,6 +181,7 @@ function cargaImagen(tx,resultados)
 		imageShare="Icon-40.png";
 		
 	}
+	vecdepa = null;
 }
 function generarDepartamentos()
 {
@@ -170,6 +200,35 @@ function generaDeptoDB(tx)
 function mostrarDepartamentos(tx,resultados)
 {
 	var cadena = "";
+	var vecdepa = new Array();
+	vecdepa['antioquia'] = "Antioquia";
+	vecdepa['arauca'] = "Arauca";
+	vecdepa['atlantico'] = "Atlántico";
+	vecdepa['bolivar'] = "Bolívar";
+	vecdepa['boyaca'] = "Boyacá";
+	vecdepa['caldas'] = "Caldas";
+	vecdepa['caqueta'] = "Caquetá";
+	vecdepa['casanare'] = "Casanare";
+	vecdepa['cauca'] = "Cauca";
+	vecdepa['cesar'] = "Cesar";
+	vecdepa['choco'] = "Chocó";
+	vecdepa['cordoba'] = "Córdoba";
+	vecdepa['cundinamarca'] = "Cundinamarca";
+	vecdepa['guajira'] = "Guajira";
+	vecdepa['guaviare'] = "Guaviare";
+	vecdepa['huila'] = "Huila";
+	vecdepa['magdalena'] = "Magdalena";
+	vecdepa['meta'] = "Meta";
+	vecdepa['narino'] = "Nariño";
+	vecdepa['norte_santander'] = "Norte de Santander";
+	vecdepa['putumayo'] = "Putumayo";
+	vecdepa['quindio'] = "Quindío";
+	vecdepa['risaralda'] = "Risaralda";
+	vecdepa['santander'] = "Santander";
+	vecdepa['sucre'] = "Sucre";
+	vecdepa['tolima'] = "Tolima";
+	vecdepa['valle'] = "Valle";
+	vecdepa['vichada'] = "Vichada";
 	//
 	if(resultados.rows.length==0)
 	{
@@ -182,13 +241,14 @@ function mostrarDepartamentos(tx,resultados)
 			if(deptoactual!="")
 			{
 				if(searchdepto==deptoactual)
-					cadena += '<option value="'+deptoactual+'" selected>'+deptoactual+'</option>';
+					cadena += '<option value="'+deptoactual+'" selected>'+vecdepa[deptoactual]+'</option>';
 				else
-					cadena += '<option value="'+deptoactual+'">'+deptoactual+'</option>';
+					cadena += '<option value="'+deptoactual+'">'+vecdepa[deptoactual]+'</option>';
 			}
 		}
 		document.getElementById("departamento").innerHTML=cadena;
 	}
+	vecdepa = null;
 }
 
 
