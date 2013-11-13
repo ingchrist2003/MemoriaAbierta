@@ -144,7 +144,6 @@ function cargaImagen(tx,resultados)
 								'<center><img src="'+imagen+'" width="80%" style="max-width:80%;margin:10px" ></center>'+
 								'<br /><b>Departamento:</b> '+departamento+
 								'<br /><b>Municipio:</b> '+municipio+
-								'<br /><b>Número Víctimas:</b> '+numvictimas+
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
 								'<br />'+descripcion+
 								'</div>';
