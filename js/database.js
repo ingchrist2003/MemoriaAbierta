@@ -145,7 +145,7 @@ function cargaImagen(tx,resultados)
 								'<br /><b>Departamento:</b> '+departamento+
 								'<br /><b>Municipio:</b> '+municipio+
 								'<br /><b>Grupo Armado:</b> '+grupoarmado+
-								'<br />'+descripcion+
+								'<br /><br />'+descripcion+
 								'</div>';
 		descripcionShare = "Rutas del Conflicto - Fundación Ideas para la Paz \nhttp://rutasdelconflicto.com  \nMasacre: "+nombre+"\n"+departamento+"\n"+municipio;
 		urlShare="http://www.rutasdelconflicto.com";

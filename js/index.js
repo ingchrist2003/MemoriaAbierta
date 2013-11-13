@@ -179,6 +179,7 @@
 								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
 								'<br>Grupo Armado: '+grupoarmado+''+
+								'<br><a href="#" onclick="callItem('+j+')"  class="link" >ver más</a>'+
 								'</td>'+
 								'</tr>'+
 								'</table>';
@@ -220,6 +221,7 @@
 								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
 								'<br>Grupo Armado: '+grupoarmado+''+
+								'<br><a href="#" onclick="callItem('+j+')"  class="link" >ver más</a>'+
 								'</td>'+
 								'</tr>'+
 								'</table>';
