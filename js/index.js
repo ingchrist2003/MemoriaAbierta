@@ -264,7 +264,7 @@
 					document.getElementById("thelist").innerHTML=stringvar2;
 					pullDownAction();
 					myScroll.refresh();
-					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar</span>';
+					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí</span>';
 					
 					$("#pullDown").removeClass("loading");
 					stringvar2 = null;
@@ -388,7 +388,11 @@
 				  $('#map_canvas').height(window_height);
 				  $('#map_canvas').width($('[data-role="header"]').width());
 				  $('#map_canvas').css({ top: (header_height+20)+"px" });
-				  alert(width_height);
+				 
+				  if(width_height<=300)
+				  {
+					  $('.pullDownLabel').css("font-size","10px;");
+				  }
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4)+100;
