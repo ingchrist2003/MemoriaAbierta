@@ -389,9 +389,9 @@
 				  $('#map_canvas').css({ top: (header_height+20)+"px" });
 				  
 				  pantallaheight = $(this).height();
-				  heightvar = ( pantallaheight * 0.4);
+				  heightvar = ( pantallaheight * 0.4)+100;
 				  topvar = pantallaheight - heightvar - 10;
-				  $('#wrapper').css({ top: (topvar-90)+"px" });
+				  $('#wrapper').css({ top: topvar+"px" });
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
