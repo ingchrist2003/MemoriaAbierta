@@ -380,6 +380,7 @@
 						myScroll2.scrollTo(0,0);
 					});
                   header_height  = $('[data-role="header"]').height();
+				  width_height  = $('[data-role="header"]').width();
                   footer_height  = $('[data-role="footer"]').height();
                   window_height  = ($(this).height())-header_height-footer_height-30;
                   $('[data-role="content"]').css('height', window_height);
@@ -387,6 +388,7 @@
 				  $('#map_canvas').height(window_height);
 				  $('#map_canvas').width($('[data-role="header"]').width());
 				  $('#map_canvas').css({ top: (header_height+20)+"px" });
+				  alert(width_height);
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4)+100;
