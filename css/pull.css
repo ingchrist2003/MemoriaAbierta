@@ -181,7 +181,7 @@
 }
 
 @media (max-width: 300px) { // will only happen on viewport less then 480 pixels (mobile)
-  .pullDownLabel {
+  .pullDown{
     font-size:8px; 
   }
 }
