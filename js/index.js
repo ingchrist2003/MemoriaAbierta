@@ -390,7 +390,7 @@
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4);
-				  topvar = pantallaheight - heightvar - 10;
+				  topvar = pantallaheight - heightvar - 100;
 				  $('#wrapper').css({ top: topvar+"px" });
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
