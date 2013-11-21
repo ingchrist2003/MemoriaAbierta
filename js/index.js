@@ -390,8 +390,8 @@
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4);
-				  topvar = pantallaheight - heightvar - 100;
-				  $('#wrapper').css({ top: topvar+"px" });
+				  topvar = pantallaheight - heightvar - 10;
+				  $('#wrapper').css({ top: (topvar-90)+"px" });
 				  $('#wrapper').height(heightvar);
 				  $('#currenttitle').css({ top: (topvar-40)+"px" });
 				  //inicializa google maps
