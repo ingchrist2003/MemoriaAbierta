@@ -389,17 +389,13 @@
 				  $('#map_canvas').width($('[data-role="header"]').width());
 				  $('#map_canvas').css({ top: (header_height+20)+"px" });
 				 
-				  if(width_height<=300)
-				  {
-					  $('.pullDownLabel').css("font-size","10px;");
-				  }
 				  
 				  pantallaheight = $(this).height();
 				  heightvar = ( pantallaheight * 0.4)+100;
 				  topvar = pantallaheight - heightvar - 10;
 				  $('#wrapper').css({ top: topvar+"px" });
 				  $('#wrapper').height(heightvar);
-				  $('#currenttitle').css({ top: (topvar-40)+"px" });
+				  $('#currenttitle').css({ top: (topvar-60)+"px" });
 				  //inicializa google maps
 				  initialize();
 				  //inicializa el call del slider de radio de distancia
@@ -422,7 +418,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "+="+(heightvar-120)+"px"
+							top: "+="+(heightvar-140)+"px"
 						  }, 100 ); 
 						  listadoshow = false;
 					  }else{
@@ -430,7 +426,7 @@
 							opacity: 0.8,
 							marginBottom: "0.6in",
 							borderWidth: "10px",
-							top: "-="+(heightvar-120)+"px"
+							top: "-="+(heightvar-140)+"px"
 						  }, 100 );
 						  listadoshow = true;
 					  }
