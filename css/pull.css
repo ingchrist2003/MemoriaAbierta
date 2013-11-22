@@ -104,6 +104,9 @@
 	font-size:12px;
 	color:#888;
 }
+.textoacordeon{
+	font-size:12px;
+}
 }
 @media only screen and (min-width: 200px) and (max-width: 300px) {
 #pullDown, #pullUp {
@@ -115,6 +118,9 @@
 	font-weight:bold;
 	font-size:8px;
 	color:#888;
+}
+.textoacordeon{
+	font-size:8px;
 }
 }
 #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
