@@ -92,6 +92,8 @@
  * Pull down styles
  *
  */
+
+@media only screen and (min-width: 301px) {
 #pullDown, #pullUp {
 	background:#fff;
 	height:40px;
@@ -99,8 +101,21 @@
 	padding:5px 10px;
 	border-bottom:1px solid #ccc;
 	font-weight:bold;
-	font-size:14px;
+	font-size:10px;
 	color:#888;
+}
+}
+@media only screen and (min-width: 200px) and (max-width: 300px) {
+#pullDown, #pullUp {
+	background:#fff;
+	height:40px;
+	line-height:40px;
+	padding:5px 10px;
+	border-bottom:1px solid #ccc;
+	font-weight:bold;
+	font-size:8px;
+	color:#888;
+}
 }
 #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
 	display:block; float:left;
@@ -110,6 +125,7 @@
 	-webkit-transition-property:-webkit-transform;
 	-webkit-transition-duration:250ms;	
 }
+
 #pullDown .pullDownIcon {
 	-webkit-transform:rotate(0deg) translateZ(0);
 }
