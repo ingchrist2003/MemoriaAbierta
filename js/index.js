@@ -133,7 +133,7 @@
 					var stringvar2 = "";
 					var j=1;
 					setcentro = false;	
-					for(i = 0; (i < num ) && (i < 50); i++)
+					for(i = 0; (i < num ) && (j < 50); i++)
 					{
 						
 						var elemactual = masacresarray[i];

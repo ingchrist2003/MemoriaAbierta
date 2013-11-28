@@ -29,7 +29,7 @@ function abrirBaseDatos()
 function crearRegistros(tx)
 {
 	tx.executeSql('DROP TABLE IF EXISTS MASACRES');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (id INTEGER PRIMARY KEY AUTOINCREMENT,nid INTEGER NULL, nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,grupoarmado TEXT  NULL,numvictimas TEXT  NULL,palabras_clave  TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MASACRES (nid INTEGER PRIMARY KEY , nombre TEXT  NULL, ubicacion TEXT  NULL,descripcion TEXT  NULL,departamento TEXT  NULL,municipio TEXT  NULL,grupoarmado TEXT  NULL,numvictimas TEXT  NULL,palabras_clave  TEXT  NULL,imagen TEXT  NULL,fechainicio TEXT NULL,fecha_creacion DATETIME NULL,fecha_actualizacion DATETIME NULL)')	;
 	tx = null;
 	
 }
@@ -45,13 +45,13 @@ function leerBD(tx)
 {
 	
 	if(searchvalue=="" && searchdepto=="")
-		tx.executeSql('SELECT * FROM MASACRES ORDER BY id DESC',[],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES ORDER BY nid DESC',[],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto=="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ? or palabras_clave like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE nombre LIKE ? or descripcion like ? or palabras_clave like ? ORDER BY nid DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchvalue+"%"],mostrarResultados,errorDB);
 	else if(searchvalue=="" && searchdepto!="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE departamento LIKE ?  ORDER BY id DESC',["%"+searchdepto+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE departamento LIKE ?  ORDER BY nid DESC',["%"+searchdepto+"%"],mostrarResultados,errorDB);
 	else if(searchvalue!="" && searchdepto!="")
-		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ? or palabras_clave like ?) and departamento like ? ORDER BY id DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
+		tx.executeSql('SELECT * FROM MASACRES WHERE (nombre LIKE ? or descripcion like ? or palabras_clave like ?) and departamento like ? ORDER BY nid DESC',["%"+searchvalue+"%","%"+searchvalue+"%","%"+searchdepto+"%","%"+searchdepto+"%"],mostrarResultados,errorDB);
 		
 	tx = null;
 }	
@@ -288,7 +288,7 @@ function agregarMasacresSQL(tx)
 		var numvictimas = elemactual[11];
 		var palabrasclave = elemactual[12];
 		
-		tx.executeSql('INSERT INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas,palabras_clave)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'","'+palabrasclave+'")');
+		tx.executeSql('INSERT OR IGNORE INTO MASACRES (nombre,nid,descripcion,ubicacion,imagen,fechainicio,fecha_creacion,fecha_actualizacion,departamento,municipio,grupoarmado,numvictimas,palabras_clave)  VALUES ("'+nombreact+'","'+nidact+'","'+descripcionact+'","'+ubicacionact+'","'+imagenact+'","'+fechainicioact+'","'+fechacre+'","'+fechaact+'","'+departamento+'","'+municipio+'","'+grupoarmado+'","'+numvictimas+'","'+palabrasclave+'")');
 		
 		
 	
