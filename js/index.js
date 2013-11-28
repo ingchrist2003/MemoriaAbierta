@@ -263,7 +263,7 @@
 						stringvar2 = "<li >No hay registros de masacres</li>";
 					document.getElementById("thelist").innerHTML=stringvar2;
 					var alto = $("#thelist").height();
-					alert(alto)
+					
 					$("#scroller").height(alto+200);
 					pullDownAction();
 					myScroll.refresh();
