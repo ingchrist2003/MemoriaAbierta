@@ -262,9 +262,9 @@
 					if(i==0)
 						stringvar2 = "<li >No hay registros de masacres</li>";
 					document.getElementById("thelist").innerHTML=stringvar2;
-					var alto = $("#scroller").height();
+					var alto = $("#thelist").height();
 					alert(alto)
-					$("#scroller").height(alto+100);
+					$("#scroller").height(alto+200);
 					pullDownAction();
 					myScroll.refresh();
 					document.getElementById("pullDown").innerHTML='<span class="pullDownIcon"></span><span class="pullDownLabel">Desliza para actualizar o Pulsa aquí</span>';
