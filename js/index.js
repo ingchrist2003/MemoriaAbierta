@@ -178,8 +178,7 @@
 								'<tr>'+
 								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
-								'<br>Grupo Armado: '+grupoarmado+''+
-								'<br><a href="#" onclick="callItem('+j+')"  class="link" >ver más</a>'+
+								'<br><a href="#" onclick="callItem('+j+')"  class="link" >Haga clic aquí y seleccione el registro en la parte inferior para ver el detalle</a>'+
 								'</td>'+
 								'</tr>'+
 								'</table>';
@@ -220,8 +219,7 @@
 								'<tr>'+
 								'<td valign="top" style="font-size:18px">'+
 								'<b><a href="#" onclick="callItem('+j+')"  class="link" >'+nombremasacre+'</a></b>'+
-								'<br>Grupo Armado: '+grupoarmado+''+
-								'<br><a href="#" onclick="callItem('+j+')"  class="link" >ver más</a>'+
+								'<br><a href="#" onclick="callItem('+j+')"  class="link" >Haga clic aquí y seleccione el registro en la parte inferior para ver el detalle</a>'+
 								'</td>'+
 								'</tr>'+
 								'</table>';
