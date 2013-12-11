@@ -289,7 +289,52 @@
 					});//
 					
                 }
-				
+				function validateEmail(email) 
+				{
+					var re = /\S+@\S+\.\S+/;
+					return re.test(email);
+				}
+				function onSuccess(data, status)
+				{
+					data = $.trim(data);
+					alert("Su información fue enviada satisfactoriamente "+data);
+				}
+		  
+				function onError(data, status)
+				{
+					// handle an error
+					alert("Su información no pudo ser enviada, intentelo mas adelante");
+				}  
+				function validaEnvia(form){
+					if(form.nombre.value=="")
+					{
+						alert("Ingrese su nombre");
+						return 0;	
+					}
+					if(form.email.value=="")
+					{
+						alert("Ingrese su correo electrónico");
+						return 0;	
+					}
+					if(validateEmail(form.email.value) ==false){
+						alert("Ingrese un correo electrónico valido");
+						return 0;	
+					}
+					if(form.comentario.value=="")
+					{
+						alert("Ingrese su comentario");
+						return 0;	
+					}
+					
+					$.ajax({
+						type: "POST",
+						url: "http://rutasdelconflicto.com/formulario.php",
+						cache: false,
+						data: { nombre : form.nombre.value , email : form.email.value , comentario : form.comentario.value},
+						success: onSuccess,
+						error: onError
+					});
+				}
                 function refrescarApp() {
 					//obtengo la posicion actual del gps
 					//alert("refrescando 1");

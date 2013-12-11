@@ -176,6 +176,47 @@
             	<div id="wrapper2" style="overflow:hidden; z-index:10"><div id="detallemasacre" style="position:absolute; min-height:1200px" ></div></div>
             </div><!-- /content -->
         </div><!-- /page -->
+        <!-- Start of third page -->
+        <div data-role="page" id="formu">
+        
+            <div data-role="header" style="z-index:20" class="ui-bar ui-bar-b">
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+                    <tr>
+                        <td width="20%" align="left">
+                        <a href="#" data-role="button" data-icon="arrow-l"  data-theme="b" data-inline="true" data-rel="back">Volver</a>
+                        </td>
+                        <td width="60%" align="left">&nbsp;
+                        
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /header -->
+        
+            <div data-role="content" id="content3" style="z-index:10" id="content1" style="display:block">
+            	
+                	<form name="formusend" id="formusend" method="post">
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" value="" placeholder="Nombre:" class="required"/>
+                    </div>
+                    <br>
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" value="" placeholder="Email:" class="required"/>
+                    </div>
+                    <br>
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="comentario">Comentario:</label>
+                        <textarea id="comentario" id="comentario" placeholder="Comentario:" class="required"></textarea>
+                    </div>
+                    <br>
+                    <input type="button" data-theme="b" onClick="validaEnvia(formusend)" value="Enviar">
+                    </form>
+                
+            	
+            </div><!-- /content -->
+        </div><!-- /page -->
         
             
     </body>
