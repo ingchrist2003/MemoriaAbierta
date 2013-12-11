@@ -297,7 +297,12 @@
 				function onSuccess(data, status)
 				{
 					data = $.trim(data);
-					alert("Su información fue enviada satisfactoriamente "+data);
+					alert("Su información fue enviada satisfactoriamente ");
+					//borrar los campos
+					document.formusend.nombre.value="";
+					document.formusend.email.value="";
+					document.formusend.comentario.value="";
+					
 				}
 		  
 				function onError(data, status)
