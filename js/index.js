@@ -297,7 +297,9 @@
 				function onSuccess(data, status)
 				{
 					data = $.trim(data);
-					alert("Su información fue enviada satisfactoriamente ");
+					//alert("Su información fue enviada satisfactoriamente ");
+					//$.mobile.changePage('#dialog', 'pop', true, true);
+					$( "#lnkdialogo" ).trigger( "click" );
 					//borrar los campos
 					document.formusend.nombre.value="";
 					document.formusend.email.value="";
