@@ -494,6 +494,6 @@
     window.plugins.socialsharing.share('My text');
    
   }else{
-	alert("paila");  
+	alert("no disponible");  
   }
 });
