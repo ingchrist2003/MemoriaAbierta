@@ -429,6 +429,10 @@
 					  //alert(cadenaNoticia)
 						document.getElementById('detallemasacre').innerHTML=cadenaNoticia;
 						$("#wrapper2").height(window_height-100);
+						
+						var size1 = $("#detallemasacre").height();
+						$("#detallemasacre").css("height",size1+300);
+						
 						myScroll2.refresh(); 
 						myScroll2.scrollTo(0,0);
 					});
