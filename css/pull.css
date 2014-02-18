@@ -116,11 +116,11 @@
 	padding:5px 10px;
 	border-bottom:1px solid #ccc;
 	font-weight:bold;
-	font-size:8px;
+	font-size:10px;
 	color:#888;
 }
 .textoacordeon{
-	font-size:8px;
+	font-size:10px;
 }
 }
 #pullDown .pullDownIcon, #pullUp .pullUpIcon  {
@@ -204,6 +204,6 @@
 
 @media (max-width: 300px) { // will only happen on viewport less then 480 pixels (mobile)
   .pullDown{
-    font-size:8px; 
+    font-size:10px;
   }
 }
